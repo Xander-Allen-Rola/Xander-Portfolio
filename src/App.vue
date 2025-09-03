@@ -1,10 +1,12 @@
 <script setup>
 import XanderLogo from './components/XanderLogo.vue'
+import NavigationButtons from './components/NavigationButtons.vue'
 </script>
 
 <template>
   <header>
     <XanderLogo />
+    <NavigationButtons />
   </header>
 </template>
 
