@@ -19,8 +19,8 @@ import { faHouse } from '@fortawesome/free-regular-svg-icons'
   .navigation {
     display: flex;
     align-items: center;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 200px;
+    margin-right: 200px;
   }
 
 </style>
