@@ -6,7 +6,9 @@ import Profile from './components/Profile.vue'
 
 <template>
   <header>
-    <XanderLogo />
+    <div style="margin-left: 200px;">
+      <XanderLogo />
+    </div>
     <NavigationButtons />
     <Profile />
   </header>
