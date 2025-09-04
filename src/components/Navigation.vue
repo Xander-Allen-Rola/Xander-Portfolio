@@ -20,8 +20,8 @@ import { faHouse } from '@fortawesome/free-regular-svg-icons'
   position: relative;
   display: flex;
   align-items: center;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 400px;
+  margin-right: 400px;
   padding: 0.5rem 2.5rem 0.5rem 0rem; /* top right bottom left */
   min-height: 56px;
   border-radius: 999px;
