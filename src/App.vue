@@ -16,7 +16,7 @@ import SubInfo from './components/SubInfo.vue'
       <Profile />
     </header>
     <main>
-        <HomeGrid />
+        <HomeGrid style="margin-top: 50px;" />
         <SubInfo />
     </main>
   </div>
@@ -24,23 +24,25 @@ import SubInfo from './components/SubInfo.vue'
 
 <style scoped>
 .app-container {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  inset: 0px;
-  height: 50rem;
-  margin: auto;
+  max-width: 1200px;
+  margin: 0 auto; /* Center horizontally */
+  padding: 0;
 }
 
 header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* Center header items horizontally */
+  gap: 16px;
+  margin-top: 50px;
 }
 
 main {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Center main items horizontally */
+  gap: 0;
+  margin: 0;
+  padding: 0;
 }
 </style>

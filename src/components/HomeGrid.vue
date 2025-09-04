@@ -112,11 +112,8 @@ export default {
 .grid-center-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100vw;
   height: 85vh;
-  position: relative;
-  overflow: hidden;
 }
 
 .grid-wrapper {
@@ -139,8 +136,6 @@ export default {
   width: 100%;
   height: 100%;
   background: transparent;
-  box-sizing: border-box;
-  margin: 0;
   position: relative;
   z-index: 1;
 }
@@ -148,7 +143,5 @@ export default {
 .grid-cell {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  min-width: 0;
-  min-height: 0;
 }
 </style>
