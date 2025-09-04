@@ -5,11 +5,15 @@
       :key="`${cell.row}-${cell.col}`"
       class="grid-cell"
       :style="cell.style"
-    ></div>
+    >
+      <TitleText v-if="cell.merged" />
+    </div>
   </div>
 </template>
 
 <script>
+import TitleText from './TitleText.vue';
+
 const mergedArea = {
   startRow: 2,
   endRow: 4,
@@ -19,6 +23,7 @@ const mergedArea = {
 
 export default {
   name: "HomeGrid",
+  components: { TitleText },
   computed: {
     cells() {
       const cells = [];
@@ -72,7 +77,7 @@ export default {
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(7, 1fr);
   width: 75vw;
-  height: 75vh;
+  height: 80vh;
   max-width: 1800px;
   max-height: 900px;
   background: transparent;

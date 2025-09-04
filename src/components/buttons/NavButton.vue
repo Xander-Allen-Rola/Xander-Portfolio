@@ -6,9 +6,9 @@
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 .nav-btn {
-  width: 100px;
-  height: 48px;
-  font-size: 1.1rem;
+  width: 110px;
+  height: 40px;
+  font-size: 19px;
   background: transparent;
   border: none;
   cursor: pointer;

@@ -11,8 +11,8 @@
     align-items: center;
 }
 .xander-logo img {
-    width: 64px;   /* Increase as needed */
-    height: 64px;  /* Increase as needed */
+    width: 56px;   /* Increase as needed */
+    height: 52px;  /* Increase as needed */
 }
 .xander-logo .ander {
     font-size: 24px; /* Increase as needed */
