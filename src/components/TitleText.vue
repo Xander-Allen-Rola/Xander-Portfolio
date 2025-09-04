@@ -5,7 +5,7 @@ import ProfileButton from './buttons/ProfileButton.vue';
 <template>
   <div class="title-text">
     <h1>Xander Allen Rola</h1>
-    <p>Full-Stack Developer | Passion for Clean Code and Creative Solutions</p>
+    <p>Front-End Developer | Passion for Clean Code and Creative Solutions</p>
     <ProfileButton label="Hire Me" class="oblong-btn" />
   </div>
 </template>

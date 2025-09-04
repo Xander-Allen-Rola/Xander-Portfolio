@@ -3,6 +3,7 @@ import XanderLogo from './components/XanderLogo.vue'
 import NavigationButtons from './components/Navigation.vue'
 import Profile from './components/Profile.vue'
 import HomeGrid from './components/HomeGrid.vue'
+import SubInfo from './components/SubInfo.vue'
 </script>
 
 <template>
@@ -15,7 +16,10 @@ import HomeGrid from './components/HomeGrid.vue'
       <Profile />
     </header>
     <main>
-      <HomeGrid />
+      <div class="main-content">
+        <HomeGrid />
+        <SubInfo />
+      </div>
     </main>
   </div>
 </template>
@@ -39,7 +43,13 @@ body {
   max-width: 500vw;
   max-height: 100dvh;
   margin: auto;
-  
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100vw; /* Make it full viewport width */
+  align-items: stretch; /* Ensure children stretch */
 }
 
 header {

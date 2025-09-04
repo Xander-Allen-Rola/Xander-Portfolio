@@ -1,12 +1,47 @@
 <template>
-  <div class="grid-container">
-    <div
-      v-for="cell in cells"
-      :key="`${cell.row}-${cell.col}`"
-      class="grid-cell"
-      :style="cell.style"
-    >
-      <TitleText v-if="cell.merged" />
+  <div class="grid-wrapper">
+    <!-- Overlay images -->
+    <img
+      alt="cylinder"
+      src="@/assets/images/cylinder.png"
+      class="overlay-img"
+      :style="{ top: '380px', left: '1085px' }"
+    />
+    <img
+      alt="pyramid"
+      src="@/assets/images/pyramid.png"
+      class="overlay-img pyramid-img"
+      :style="{ top: '450px', left: '-130px' }"
+    />
+    <img
+      alt="smoothcircle"
+      src="@/assets/images/smoothcircle.png"
+      class="overlay-img smoothcircle-img"
+      :style="{ top: '30px', left: '27px' }"
+    />
+    <img
+      alt="spikedcircle"
+      src="@/assets/images/spikedcircle.png"
+      class="overlay-img spikedcircle-img"
+      :style="{ top: '-20px', left: '960px' }"
+    />
+    <img
+      alt="surfacedcircle"
+      src="@/assets/images/surfacedcircle.png"
+      class="overlay-img surfacedcircle-img"
+      :style="{ top: '330px', left: '500px' }"
+    />
+
+    <!-- The grid itself -->
+    <div class="grid-container">
+      <div
+        v-for="cell in cells"
+        :key="`${cell.row}-${cell.col}`"
+        class="grid-cell"
+        :style="cell.style"
+      >
+        <TitleText v-if="cell.merged" />
+      </div>
     </div>
   </div>
 </template>
@@ -72,6 +107,17 @@ export default {
 </script>
 
 <style scoped>
+.grid-wrapper {
+  position: relative;
+}
+
+.overlay-img {
+  position: absolute;
+  width: 430px;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -83,6 +129,8 @@ export default {
   background: transparent;
   box-sizing: border-box;
   margin: 40px auto 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .grid-cell {
