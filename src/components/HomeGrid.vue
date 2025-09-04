@@ -1,46 +1,48 @@
 <template>
-  <div class="grid-wrapper">
-    <!-- Overlay images -->
-    <img
-      alt="cylinder"
-      src="@/assets/images/cylinder.png"
-      class="overlay-img"
-      :style="{ top: '380px', left: '1085px' }"
-    />
-    <img
-      alt="pyramid"
-      src="@/assets/images/pyramid.png"
-      class="overlay-img pyramid-img"
-      :style="{ top: '450px', left: '-130px' }"
-    />
-    <img
-      alt="smoothcircle"
-      src="@/assets/images/smoothcircle.png"
-      class="overlay-img smoothcircle-img"
-      :style="{ top: '30px', left: '27px' }"
-    />
-    <img
-      alt="spikedcircle"
-      src="@/assets/images/spikedcircle.png"
-      class="overlay-img spikedcircle-img"
-      :style="{ top: '-20px', left: '960px' }"
-    />
-    <img
-      alt="surfacedcircle"
-      src="@/assets/images/surfacedcircle.png"
-      class="overlay-img surfacedcircle-img"
-      :style="{ top: '330px', left: '500px' }"
-    />
+  <div class="grid-center-wrapper">
+    <div class="grid-wrapper">
+      <!-- Overlay images -->
+      <img
+        alt="cylinder"
+        src="@/assets/images/cylinder.png"
+        class="overlay-img"
+        :style="{ top: '330px', left: '1120px' }"
+      />
+      <img
+        alt="pyramid"
+        src="@/assets/images/pyramid.png"
+        class="overlay-img pyramid-img"
+        :style="{ top: '380px', left: '-130px' }"
+      />
+      <img
+        alt="smoothcircle"
+        src="@/assets/images/smoothcircle.png"
+        class="overlay-img smoothcircle-img"
+        :style="{ top: '-12px', left: '30px' }"
+      />
+      <img
+        alt="spikedcircle"
+        src="@/assets/images/spikedcircle.png"
+        class="overlay-img spikedcircle-img"
+        :style="{ top: '-60px', left: '990px' }"
+      />
+      <img
+        alt="surfacedcircle"
+        src="@/assets/images/surfacedcircle.png"
+        class="overlay-img surfacedcircle-img"
+        :style="{ top: '280px', left: '530px' }"
+      />
 
-    <!-- The grid itself -->
-    <div class="grid-container">
-      <div
-        v-for="cell in cells"
-        :key="`${cell.row}-${cell.col}`"
-        class="grid-cell"
-        :style="cell.style"
-      >
-        <TitleText v-if="cell.merged" />
+      <!-- The grid itself -->
+      <div class="grid-container">
+        <div
+          v-for="cell in cells"
+          :key="`${cell.row}-${cell.col}`"
+          class="grid-cell"
+          :style="cell.style"
+        >
+          <TitleText v-if="cell.merged" />
+        </div>
       </div>
     </div>
   </div>
@@ -107,8 +109,20 @@ export default {
 </script>
 
 <style scoped>
+.grid-center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 85vh;
+  position: relative;
+  overflow: hidden;
+}
+
 .grid-wrapper {
   position: relative;
+  width: 1480px;
+  height: 710px;
 }
 
 .overlay-img {
@@ -122,13 +136,11 @@ export default {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(7, 1fr);
-  width: 75vw;
-  height: 80vh;
-  max-width: 1800px;
-  max-height: 900px;
+  width: 100%;
+  height: 100%;
   background: transparent;
   box-sizing: border-box;
-  margin: 40px auto 0 auto;
+  margin: 0;
   position: relative;
   z-index: 1;
 }

@@ -9,8 +9,6 @@
   border: none;
   border-top: 2px solid #ccc;
   width: 100vw; /* Full viewport width */
-  margin: 0;
-  left: 0%;
   position: relative;
 }
 </style>
