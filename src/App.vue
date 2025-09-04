@@ -32,7 +32,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: center; /* Center header items horizontally */
-  gap: 16px;
   margin-top: 50px;
   border: red solid 1px;
 }
