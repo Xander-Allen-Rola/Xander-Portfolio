@@ -4,6 +4,7 @@ import NavigationButtons from './components/Navigation.vue'
 import Profile from './components/Profile.vue'
 import HomeGrid from './components/HomeGrid.vue'
 import SubInfo from './components/SubInfo.vue'
+import AboutMe from './components/AboutMe.vue'
 </script>
 
 <template>
@@ -17,14 +18,15 @@ import SubInfo from './components/SubInfo.vue'
         <HomeGrid style="margin-top: 50px;" />
         <SubInfo />
     </main>
+    <abt>
+      <AboutMe style="margin-top:50px"/>
+    </abt>
   </div>
 </template>
 
 <style scoped>
 .app-container {
   max-width: 1200px;
-  margin: 0 auto; /* Center horizontally */
-  padding: 0;
   border: red solid 1px;
 }
 
