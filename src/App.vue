@@ -9,9 +9,7 @@ import SubInfo from './components/SubInfo.vue'
 <template>
   <div class="app-container">
     <header>
-      <div>
-        <XanderLogo />
-      </div>
+      <XanderLogo />
       <NavigationButtons />
       <Profile />
     </header>
@@ -27,6 +25,7 @@ import SubInfo from './components/SubInfo.vue'
   max-width: 1200px;
   margin: 0 auto; /* Center horizontally */
   padding: 0;
+  border: red solid 1px;
 }
 
 header {
@@ -35,11 +34,13 @@ header {
   justify-content: center; /* Center header items horizontally */
   gap: 16px;
   margin-top: 50px;
+  border: red solid 1px;
 }
 
 main {
   display: flex;
   flex-direction: column;
   align-items: center; /* Center main items horizontally */
+  border: red solid 1px;
 }
 </style>

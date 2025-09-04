@@ -1,5 +1,5 @@
 <script setup>
-import ProfileButton from './buttons/ProfileButton.vue';
+import ProfileButton from './buttons/HireMeButton.vue';
 </script>
 
 <template>

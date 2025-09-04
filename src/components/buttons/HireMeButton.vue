@@ -31,6 +31,7 @@ const props = defineProps({
   font-family: 'Poppins', sans-serif;
   white-space: nowrap;
   background-clip: padding-box, border-box;
+  padding: 0 20px;   /* Added for more spacing */
 }
 .nav-btn:hover {
   cursor: pointer;
@@ -39,17 +40,5 @@ const props = defineProps({
 /* Oblong: left and right rounded, top and bottom straight */
 .oblong-btn {
   border-radius: 24px / 50%;
-  
-}
-
-/* Circle button */
-.circle-btn {
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 </style>
