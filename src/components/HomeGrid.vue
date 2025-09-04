@@ -1,28 +1,68 @@
 <template>
   <div class="grid-container">
     <div
-      v-for="cell in 42"
-      :key="cell"
+      v-for="cell in cells"
+      :key="`${cell.row}-${cell.col}`"
       class="grid-cell"
-      :class="{ 'no-border': isNoBorder(cell - 1) }"
+      :style="cell.style"
     ></div>
   </div>
 </template>
 
 <script>
+const mergedArea = {
+  startRow: 2,
+  endRow: 4,
+  startCol: 2,
+  endCol: 5,
+};
+
 export default {
   name: "HomeGrid",
-  methods: {
-    isNoBorder(index) {
-      // Convert index to (row, col)
-      const row = Math.floor(index / 6) + 1;
-      const col = (index % 6) + 1;
-      return (
-        row >= 2 && row <= 5 &&
-        col >= 2 && col <= 5
-      );
-    }
-  }
+  computed: {
+    cells() {
+      const cells = [];
+      for (let row = 1; row <= 7; row++) {
+        for (let col = 1; col <= 6; col++) {
+          // Only render merged cell once at top-left
+          if (
+            row === mergedArea.startRow &&
+            col === mergedArea.startCol
+          ) {
+            cells.push({
+              row,
+              col,
+              merged: true,
+              style: {
+                gridRow: `${mergedArea.startRow} / ${mergedArea.endRow + 1}`,
+                gridColumn: `${mergedArea.startCol} / ${mergedArea.endCol + 1}`,
+              },
+            });
+          }
+          // Skip other cells in merged area
+          else if (
+            row >= mergedArea.startRow &&
+            row <= mergedArea.endRow &&
+            col >= mergedArea.startCol &&
+            col <= mergedArea.endCol
+          ) {
+            continue;
+          } else {
+            cells.push({
+              row,
+              col,
+              merged: false,
+              style: {
+                gridRow: row,
+                gridColumn: col,
+              },
+            });
+          }
+        }
+      }
+      return cells;
+    },
+  },
 };
 </script>
 
@@ -31,23 +71,19 @@ export default {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(7, 1fr);
-  width: 80vw; /* Reduce width for better centering */
-  height: 70vh;
+  width: 75vw;
+  height: 75vh;
   max-width: 1800px;
   max-height: 900px;
   background: transparent;
   box-sizing: border-box;
-  margin: 40px auto 0 auto; /* Center horizontally */
+  margin: 40px auto 0 auto;
 }
 
 .grid-cell {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2); /* 20% opacity */
+  border: 1px solid rgba(255, 255, 255, 0.2);
   min-width: 0;
   min-height: 0;
-}
-
-.no-border {
-  border: none !important;
 }
 </style>

@@ -10,4 +10,11 @@
     display: flex;
     align-items: center;
 }
+.xander-logo img {
+    width: 64px;   /* Increase as needed */
+    height: 64px;  /* Increase as needed */
+}
+.xander-logo .ander {
+    font-size: 24px; /* Increase as needed */
+}
 </style>

@@ -15,9 +15,7 @@ import HomeGrid from './components/HomeGrid.vue'
       <Profile />
     </header>
     <main>
-      <HomeGrid>
-        
-      </HomeGrid>
+      <HomeGrid />
     </main>
   </div>
 </template>
