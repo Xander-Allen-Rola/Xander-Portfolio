@@ -41,8 +41,5 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center; /* Center main items horizontally */
-  gap: 0;
-  margin: 0;
-  padding: 0;
 }
 </style>

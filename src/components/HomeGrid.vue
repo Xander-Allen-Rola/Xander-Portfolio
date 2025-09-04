@@ -113,7 +113,6 @@ export default {
   display: flex;
   justify-content: center;
   width: 100vw;
-  height: 85vh;
 }
 
 .grid-wrapper {

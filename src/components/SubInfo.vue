@@ -11,7 +11,7 @@
 
 <style scoped>
 .horizontal-line {
-  border-top: 2px solid #ccc;
+  border: 2px solid #ccc;
   width: 100vw; /* Full viewport width */
 }
 .subinfo-text {
