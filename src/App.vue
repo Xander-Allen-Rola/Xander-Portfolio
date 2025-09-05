@@ -19,7 +19,7 @@ import AboutMe from './components/AboutMe.vue'
         <SubInfo />
     </main>
     <abt>
-      <AboutMe style="margin-top:50px"/>
+      <AboutMe style="margin-top:70px"/>
     </abt>
   </div>
 </template>
@@ -32,7 +32,7 @@ import AboutMe from './components/AboutMe.vue'
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 50px;
+  margin-top: 470px;
 }
 
 header {
