@@ -75,7 +75,7 @@
 .text-container {
   display: flex;
   flex-direction: column;
-  max-width: 550px; /* Adjust as needed */
+  max-width: 590px; /* Adjust as needed */
   margin-left: 60px;
   gap: 20px;
 }

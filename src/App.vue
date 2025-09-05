@@ -15,7 +15,7 @@ import AboutMe from './components/AboutMe.vue'
       <Profile />
     </header>
     <main>
-        <HomeGrid style="margin-top: 50px;" />
+        <HomeGrid style="margin-top: 30px;" />
         <SubInfo />
     </main>
     <abt>
@@ -26,27 +26,27 @@ import AboutMe from './components/AboutMe.vue'
 
 <style scoped>
 .app-container {
-  max-width: 1460px;
-  border: red solid 1px;
+  max-width: 1400px;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 680px;
+  margin-top: 660px;
 }
 
 header {
   display: flex;
   align-items: center;
   justify-content: center; /* Center header items horizontally */
-  margin-top: 50px;
-  border: red solid 1px;
 }
 
 main {
   display: flex;
   flex-direction: column;
   align-items: center; /* Center main items horizontally */
-  border: red solid 1px;
+}
+
+:global(body) {
+  overflow-x: hidden;
 }
 </style>
