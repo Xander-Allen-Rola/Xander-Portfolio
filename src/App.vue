@@ -26,8 +26,13 @@ import AboutMe from './components/AboutMe.vue'
 
 <style scoped>
 .app-container {
-  max-width: 1200px;
+  max-width: 1480px;
   border: red solid 1px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 50px;
 }
 
 header {
