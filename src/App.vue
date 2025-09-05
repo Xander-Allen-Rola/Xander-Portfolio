@@ -5,6 +5,7 @@ import Profile from './components/Profile.vue'
 import HomeGrid from './components/HomeGrid.vue'
 import SubInfo from './components/SubInfo.vue'
 import AboutMe from './components/AboutMe.vue'
+import Projects from './components/Projects.vue'
 </script>
 
 <template>
@@ -18,20 +19,19 @@ import AboutMe from './components/AboutMe.vue'
         <HomeGrid style="margin-top: 30px;" />
         <SubInfo />
     </main>
-    <abt>
       <AboutMe style="margin-top:70px"/>
-    </abt>
+      <Projects />
   </div>
 </template>
 
 <style scoped>
 .app-container {
-  max-width: 1400px;
+  max-width: 1300px;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 660px;
+  margin-top: 1560px;
 }
 
 header {
