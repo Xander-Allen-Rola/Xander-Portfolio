@@ -6,6 +6,7 @@ import HomeGrid from './components/HomeGrid.vue'
 import SubInfo from './components/SubInfo.vue'
 import AboutMe from './components/AboutMe.vue'
 import Projects from './components/Projects.vue'
+import Contact from './components/Contact.vue'
 </script>
 
 <template>
@@ -21,6 +22,7 @@ import Projects from './components/Projects.vue'
     </main>
       <AboutMe style="margin-top:70px"/>
       <Projects style="margin-top: 100px"/>
+      <Contact style="margin-top: 100px"/>
   </div>
 </template>
 

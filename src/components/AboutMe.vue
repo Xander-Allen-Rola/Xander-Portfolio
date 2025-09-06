@@ -1,7 +1,7 @@
 <template>
   <div class="legend-container">
       <div class="title-container">
-        <h2 class="about-title">About Me</h2>
+        <h2>About Me</h2>
         <img src="../assets/icons/doublestar.svg" style="height: 35px;"/>
       </div>
 
@@ -82,9 +82,6 @@
 .description-icon {
   width: 50px;
   height: 50px;
-}
-.about-title {
-  font-size: 2rem;
 }
 .circle-number {
   width: 58px;
