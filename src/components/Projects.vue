@@ -4,7 +4,7 @@ import ProjectImgPlaceholder from '@/assets/images/projectplaceholder.png'
 </script>
 
 <template>
-    <div class="projects-container" style="margin-top: 100px;">
+    <div class="projects-container">
         <div class="title-container">
             <h2 style="font-size: 2rem">Featured Projects</h2>
             <img src="../assets/icons/doublestar.svg" style="height: 35px;"/>
