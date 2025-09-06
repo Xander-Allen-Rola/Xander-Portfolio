@@ -1,4 +1,5 @@
 <script setup>
+import ViewProject from './buttons/ViewProject.vue';``
 defineProps({
   name: String,
   description: String,
@@ -13,6 +14,7 @@ defineProps({
             <div class="text-container">
                 <h1>{{ name }}</h1>
                 <p>{{ description }}</p>
+                <ViewProject />
             </div>
         </div>
     </div>
