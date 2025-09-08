@@ -1,9 +1,9 @@
 <script setup>
-import HireMeButton from './buttons/HireMeButton.vue';
+import CommonUseButton from './buttons/CommonUseButton.vue';
 import ProfileButton from './buttons/ProfileButton.vue';
 </script>
 
 <template>
-    <HireMeButton label="Hire Me" class="oblong-btn" />
+    <CommonUseButton label="Hire Me"/>
     <ProfileButton />
 </template>

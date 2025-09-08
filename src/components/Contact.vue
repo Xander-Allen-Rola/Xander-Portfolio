@@ -1,5 +1,5 @@
 <script setup>
-import ContactButton from './buttons/ContactButton.vue'
+import CommonUseButton from './buttons/CommonUseButton.vue'
 </script>
 
 <template>
@@ -33,7 +33,7 @@ import ContactButton from './buttons/ContactButton.vue'
           📱 Phone: +63 916 147 1367 <br>
           🌐 LinkedIn: linkedin.com/in/xander-allen-rola <br>
           💻 GitHub: github.com/Xander-Allen-Rola</p>
-          <ContactButton />
+          <CommonUseButton label="Send me a message" width="230px"/>
     </div>
     <img src="../assets/images/contactmeformal.svg" style="height: 450px;  "/>
   </div>

@@ -1,5 +1,5 @@
 <script setup>
-import ProfileButton from './buttons/HireMeButton.vue';
+import CommonUseButton from './buttons/CommonUseButton.vue';
 </script>
 
 <template>
@@ -17,10 +17,10 @@ import ProfileButton from './buttons/HireMeButton.vue';
     <p 
     style="font-size: 1.25rem;
     color: #ddd;">Front-End Developer | Passion for Clean Code and Creative Solutions</p>
-    <ProfileButton 
-    label="Hire Me" 
-    style="margin-top: 2rem;
-    width: 160px;
-    font-size: 1.1rem;" />
+    <CommonUseButton
+      label="Hire Me"
+      :width="'160px'"
+      style="margin-top: 2rem; font-size: 1.1rem;"
+    />
   </div>
 </template>

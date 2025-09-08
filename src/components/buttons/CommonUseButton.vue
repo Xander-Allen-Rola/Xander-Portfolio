@@ -6,19 +6,22 @@ const props = defineProps({
   class: {
     type: String,
     default: ''
+  },
+  width: {
+    type: String
   }
 })
 </script>
 
 <template>
-  <button class="nav-btn" :class="props.class">
+  <button class="nav-btn" :class="props.class" :style="props.width ? { width: props.width } : {}">
     <slot>{{ label }}</slot>
   </button>
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 .nav-btn {
-  width: 100px;
+  /* width is now customizable via prop */
   height: 48px;
   font-size: 16px;
   background: 

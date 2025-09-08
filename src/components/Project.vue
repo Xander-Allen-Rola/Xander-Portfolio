@@ -1,5 +1,5 @@
 <script setup>
-import ViewProject from './buttons/ViewProject.vue';``
+import CommonUseButton from './buttons/CommonUseButton.vue';
 defineProps({
   name: String,
   description: String,
@@ -27,7 +27,7 @@ defineProps({
             max-width: 600px;">
                 <h1 style="font-weight: bold;">{{ name }}</h1>
                 <p>{{ description }}</p>
-                <ViewProject />
+                <CommonUseButton label="View Project" width="160px" />
             </div>
         </div>
     </div>
