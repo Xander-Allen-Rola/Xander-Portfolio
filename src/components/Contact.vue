@@ -3,9 +3,19 @@ import ContactButton from './buttons/ContactButton.vue'
 </script>
 
 <template>
-  <div class="container">
-    <div class="contact-container">
-      <div class="title-container">
+  <div 
+  style="display: flex;
+  gap: 200px;
+  align-items: center;">
+    <div 
+    style="display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 50%;">
+      <div 
+      style="display: flex;
+      gap: 20px;
+      align-items: center;">
           <h2>Contact</h2>
           <img src="../assets/icons/doublestar.svg" style="height: 35px;"/>
       </div>
@@ -28,22 +38,3 @@ import ContactButton from './buttons/ContactButton.vue'
     <img src="../assets/images/contactmeformal.svg" style="height: 450px;  "/>
   </div>
 </template>
-
-<style scoped>
-.title-container {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-.contact-container {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  max-width: 50%;
-}
-.container{
-  display: flex;
-  gap: 200px;
-  align-items: center;
-}
-</style>
