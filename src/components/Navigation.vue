@@ -18,7 +18,8 @@ import { faHouse } from '@fortawesome/free-regular-svg-icons'
 <style scoped>
 .navigation {
   display: flex;
-  padding: 6px 0;
+  padding: 6px 10px;
+  gap: 12px;
   align-items: center;
   border-radius: 999px;
   border: 2px solid transparent; /* Make border transparent */

@@ -20,8 +20,9 @@ const props = defineProps({
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0 40px;
+  padding: 0 20px;
   color: #fff;
+  border-radius: 999px;
   font-family: 'Poppins', sans-serif;
 }
 .nav-btn:hover {
