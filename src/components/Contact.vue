@@ -43,7 +43,7 @@ import ContactButton from './buttons/ContactButton.vue'
 }
 .container{
   display: flex;
-  gap: 170px;
+  gap: 200px;
   align-items: center;
 }
 </style>
