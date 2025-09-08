@@ -7,6 +7,7 @@ import SubInfo from './components/SubInfo.vue'
 import AboutMe from './components/AboutMe.vue'
 import Projects from './components/Projects.vue'
 import Contact from './components/Contact.vue'
+import SocialsButtons from './components/SocialsButtons.vue'
 </script>
 
 <template>
@@ -23,6 +24,11 @@ import Contact from './components/Contact.vue'
       <AboutMe style="margin-top:70px"/>
       <Projects style="margin-top: 100px"/>
       <Contact style="margin-top: 100px"/>
+    <footer>
+      <XanderLogo />
+      <SocialsButtons />
+      <Profile />
+    </footer>
   </div>
 </template>
 
@@ -33,13 +39,20 @@ import Contact from './components/Contact.vue'
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 1840px;
+  margin-top: 1900px;
 }
 
 header {
   display: flex;
   align-items: center;
   justify-content: center; /* Center header items horizontally */
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center header items horizontally */
+  margin-top: 100px
 }
 
 main {
