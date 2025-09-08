@@ -1,6 +1,12 @@
 <template>
-  <div class="grid-center-wrapper">
-    <div class="grid-wrapper">
+  <div 
+  style="display: flex;
+  justify-content: center;
+  width: 100vw;">
+    <div 
+    style="position: relative;
+    width: 1480px;
+    height: 710px;">
       <!-- Overlay images -->
       <img
         alt="cylinder"
@@ -34,11 +40,20 @@
       />
 
       <!-- The grid itself -->
-      <div class="grid-container">
+      <div 
+      style="display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(7, 1fr);
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      position: relative;
+      z-index: 1;">
         <div
           v-for="cell in cells"
           :key="`${cell.row}-${cell.col}`"
-          class="grid-cell"
+          style="background: transparent;
+          border: 1px solid rgba(255, 255, 255, 0.2);"
           :style="cell.style"
         >
           <TitleText v-if="cell.merged" />
@@ -109,38 +124,10 @@ export default {
 </script>
 
 <style scoped>
-.grid-center-wrapper {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-}
-
-.grid-wrapper {
-  position: relative;
-  width: 1480px;
-  height: 710px;
-}
-
 .overlay-img {
   position: absolute;
   width: 430px;
   z-index: 0;
   pointer-events: none;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(7, 1fr);
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  position: relative;
-  z-index: 1;
-}
-
-.grid-cell {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 </style>
