@@ -13,7 +13,6 @@ import SocialsButtons from './components/SocialsButtons.vue'
 <template>
   <div
   style="max-width: 1480px;
-  border: red 2px solid;
   position: absolute;
   left: 50%;
   top: 30px;                /* Anchor to top */
