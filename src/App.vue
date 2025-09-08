@@ -37,9 +37,8 @@ import SocialsButtons from './components/SocialsButtons.vue'
   max-width: 1300px;
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: 1900px;
+  top: 0;                /* Anchor to top */
+  transform: translateX(-50%);  /* Only horizontal centering */
 }
 
 header {
