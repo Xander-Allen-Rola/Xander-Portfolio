@@ -33,20 +33,22 @@ const props = defineProps({
   border-radius: 24px / 50%;
   cursor: pointer;
 
-  /* Inner gradient (animated) + static border gradient */
+  /* Two layers: inner + border */
   background:
     linear-gradient(90deg, #7A87FB, #FFD49C, #7A87FB) padding-box,
-    linear-gradient(90deg, #FFD49C, #7A87FB) border-box;
+    linear-gradient(90deg, #FFD49C, #7A87FB, #FFD49C) border-box;
 
-  background-size: 200% 100%, 100% 100%;
-  background-position: left center, center;
+  background-size: 200% 100%, 200% 100%; /* both layers movable */
+  background-position: left center, left center; /* start position */
   background-clip: padding-box, border-box;
 
   transition: background-position 0.6s ease-in-out, filter 0.3s ease;
 }
 
 .nav-btn:hover {
-  background-position: right center, center; /* only inner animates */
+  /* move both gradients smoothly */
+  background-position: right center, right center;
   filter: brightness(1.08);
 }
+
 </style>
