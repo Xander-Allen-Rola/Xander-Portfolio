@@ -1,5 +1,5 @@
 <template>
-  <button class="nav-btn oblong-btn">
+  <button class="nav-btn">
     Send me a message
   </button>
 </template>
@@ -26,8 +26,5 @@
 .nav-btn:hover {
   filter: brightness(1.08);
   cursor: pointer;
-}
-.oblong-btn {
-  border-radius: 24px / 50%;
 }
 </style>

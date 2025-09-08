@@ -35,10 +35,6 @@ const props = defineProps({
 }
 .nav-btn:hover {
   cursor: pointer;
-}
-
-/* Oblong: left and right rounded, top and bottom straight */
-.oblong-btn {
-  border-radius: 24px / 50%;
+  filter: brightness(1.08);
 }
 </style>
