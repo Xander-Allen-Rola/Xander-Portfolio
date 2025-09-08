@@ -1,12 +1,26 @@
 <template>
-  <div class="legend-container">
-      <div class="title-container">
+  <div 
+  style="display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start; /* circles stay at the left */">
+      <div 
+      style="display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 65px;">
         <h2>About Me</h2>
         <img src="../assets/icons/doublestar.svg" style="height: 35px;"/>
       </div>
 
-    <div class="description-container">
-      <div class="circles-container">
+    <div
+    style="display: flex;
+    gap: 20px;">
+      <div 
+      style="display: flex;
+      flex-direction: column;
+      align-items: center; /* center circles and lines horizontally in their column */
+      gap: 15px;">
         <div class="circle-number">1</div>
         <div class="vertical-line"></div>
         <div class="circle-number">2</div>
@@ -16,7 +30,12 @@
         <div class="circle-number">4</div>
         <div class="vertical-line"></div>
       </div>
-      <div class="text-container">
+      <div
+      style="display: flex;
+      flex-direction: column;
+      max-width: 590px; /* Adjust as needed */
+      margin-left: 60px;
+      gap: 20px;">
         <img class="description-icon" src="../assets/icons/descriptionicon1.svg"/>
         <h3>Technical Skills & Passion</h3>
           <p style="margin-bottom: 40px;">
@@ -56,29 +75,6 @@
 </template>
 
 <style scoped>
-.description-container {
-  display: flex;
-  gap: 20px;
-}
-.legend-container {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  align-items: flex-start; /* circles stay at the left */
-}
-.title-container {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  margin-bottom: 65px;
-}
-.text-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 590px; /* Adjust as needed */
-  margin-left: 60px;
-  gap: 20px;
-}
 .description-icon {
   width: 50px;
   height: 50px;
@@ -103,17 +99,7 @@
   margin-top: 2px;
 }
 
-.circles-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* center circles and lines horizontally in their column */
-  gap: 15px;
-}
-h3 {
-  font-size: 24px;
-}
 p{
-  font-size: 18px;
   color: rgba(255, 255, 255, 0.8); /* 80% opacity */
 }
 </style>
