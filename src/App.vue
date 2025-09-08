@@ -20,8 +20,10 @@ import SocialsButtons from './components/SocialsButtons.vue'
     <header
     style="display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 320px;">
+    justify-content:space-between;
+    width: 100%;
+    border: red 2px solid;
+    ">
       <XanderLogo />
       <NavigationButtons />
       <Profile />
