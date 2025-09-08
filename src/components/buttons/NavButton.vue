@@ -1,7 +1,9 @@
 <script setup>
 const props = defineProps({
-  label: {
-    type: String,
+  label: String,
+  active: {
+    type: Boolean,
+    default: false
   }
 })
 </script>
@@ -11,10 +13,12 @@ const props = defineProps({
     <slot>{{ label }}</slot>
   </button>
 </template>
-<style scoped>
 
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 .nav-btn {
+  position: relative;
   height: 40px;
   font-size: 19px;
   background: transparent;
@@ -24,8 +28,6 @@ const props = defineProps({
   color: #fff;
   border-radius: 999px;
   font-family: 'Poppins', sans-serif;
-}
-.nav-btn:hover {
-  cursor: pointer;
+  z-index: 1; /* above the indicator */
 }
 </style>
