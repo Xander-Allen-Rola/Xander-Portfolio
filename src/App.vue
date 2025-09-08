@@ -11,56 +11,38 @@ import SocialsButtons from './components/SocialsButtons.vue'
 </script>
 
 <template>
-  <div class="app-container">
-    <header>
+  <div
+  style="max-width: 1300px;
+  position: absolute;
+  left: 50%;
+  top: 30px;                /* Anchor to top */
+  transform: translateX(-50%);">
+    <header
+    style="display: flex;
+    align-items: center;
+    justify-content: center; /* Center header items horizontally */">
       <XanderLogo />
       <NavigationButtons />
       <Profile />
     </header>
-    <main>
+    <main
+    style="display: flex;
+    flex-direction: column;
+    align-items: center; /* Center main items horizontally */">
         <HomeGrid style="margin-top: 30px;" />
         <SubInfo />
     </main>
       <AboutMe style="margin-top:70px"/>
       <Projects style="margin-top: 100px"/>
       <Contact style="margin-top: 100px"/>
-    <footer>
+    <footer
+    style="display: flex;
+    align-items: center;
+    justify-content: center; /* Center footer items horizontally */
+    margin-top: 100px">
       <XanderLogo />
       <SocialsButtons />
       <Profile />
     </footer>
   </div>
 </template>
-
-<style scoped>
-.app-container {
-  max-width: 1300px;
-  position: absolute;
-  left: 50%;
-  top: 0;                /* Anchor to top */
-  transform: translateX(-50%);  /* Only horizontal centering */
-}
-
-header {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center header items horizontally */
-}
-
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center header items horizontally */
-  margin-top: 100px
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center main items horizontally */
-}
-
-:global(body) {
-  overflow-x: hidden;
-}
-</style>
