@@ -33,7 +33,7 @@ import Contact from './components/Contact.vue'
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 1560px;
+  margin-top: 1840px;
 }
 
 header {
