@@ -5,11 +5,19 @@ import ProjectImgPlaceholder from '@/assets/images/projectplaceholder.png'
 
 <template>
     <div class="projects-container">
-        <div class="title-container">
+        <div 
+        style="display: flex;
+        gap: 20px;
+        align-items: center;">
             <h2>Featured Projects</h2>
             <img src="../assets/icons/doublestar.svg" style="height: 35px;"/>
         </div>
-        <div class="project-box-container">
+        <div 
+        style="display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        margin-top: 50px;">
             <Project name="Project Name"
             description="Description of the project goes here. 
             Lorem ipsum dolor sit amet, consectetur adipiscing elit."
@@ -25,18 +33,3 @@ import ProjectImgPlaceholder from '@/assets/images/projectplaceholder.png'
         </div>
     </div>
 </template>
-
-<style scoped>
-.title-container {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-.project-box-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 50px;
-  margin-top: 50px;
-}
-</style>
