@@ -65,7 +65,8 @@ onUnmounted(() => {
     <footer
       style="display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content:space-between;
+      width: 100%;
       margin-top: 100px">
       <XanderLogo />
       <SocialsButtons />

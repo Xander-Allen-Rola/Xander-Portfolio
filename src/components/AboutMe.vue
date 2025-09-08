@@ -54,7 +54,7 @@
           </p>
         <img class="description-icon" src="../assets/icons/descriptionicon3.svg"/>
         <h3>Professional Experience</h3>
-          <p style="margin-bottom: 10px;">
+          <p style="margin-bottom: 37px;">
             At Wilshire Financial Network, I contributed to 
             enhancing financial CRM applications by developing 
             .NET features, streamlining workflows, and building 
@@ -94,7 +94,7 @@
 
 .vertical-line {
   width: 1px;
-  height: 183px;
+  height: 173px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   margin-top: 2px;
 }
