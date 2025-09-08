@@ -1,15 +1,15 @@
 <script setup>
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick, onUnmounted } from 'vue'
 import NavButton from './buttons/NavButton.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faHouse } from '@fortawesome/free-regular-svg-icons'
 
 const activeIndex = ref(0)
 const buttons = [
-  { icon: faHouse, label: '' },
-  { label: 'About' },
-  { label: 'Projects' },
-  { label: 'Contact' }
+  { icon: faHouse, label: '', target: 'home' },
+  { label: 'About', target: 'about' },
+  { label: 'Projects', target: 'projects' },
+  { label: 'Contact', target: 'contact' }
 ]
 
 const navRef = ref(null)
@@ -29,8 +29,45 @@ const updateIndicator = () => {
   }
 }
 
+// Scroll to a section when clicking a button
+const scrollToSection = (target) => {
+  if (target === 'home') {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    return
+  }
+  const section = document.getElementById(target)
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+
+// Update activeIndex based on scroll position
+const updateActiveOnScroll = () => {
+  let closestIndex = 0
+  let minDistance = Infinity
+
+  buttons.forEach((btn, i) => {
+    const section = document.getElementById(btn.target)
+    if (!section) return
+
+    const distance = Math.abs(section.getBoundingClientRect().top)
+    if (distance < minDistance) {
+      minDistance = distance
+      closestIndex = i
+    }
+  })
+
+  activeIndex.value = closestIndex
+  updateIndicator()
+}
+
 onMounted(() => {
   nextTick(updateIndicator)
+  window.addEventListener('scroll', updateActiveOnScroll, { passive: true })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', updateActiveOnScroll)
 })
 </script>
 
@@ -42,7 +79,7 @@ onMounted(() => {
       :key="btn.label || i"
       :label="btn.label"
       :active="activeIndex === i"
-      @click="activeIndex = i; updateIndicator()"
+      @click="() => { activeIndex = i; updateIndicator(); scrollToSection(btn.target) }"
     >
       <template v-if="btn.icon">
         <FontAwesomeIcon :icon="btn.icon" />
@@ -74,7 +111,7 @@ onMounted(() => {
   width: 0;
   border-radius: 999px;
   background: #292929;
-  transition: left 0.3s, width 0.3s; /* smooth sliding */
+  transition: left 0.3s, width 0.3s;
   z-index: 0;
 }
 </style>

@@ -54,16 +54,14 @@ onUnmounted(() => {
         <Profile />
       </div>
     </header>
-    <main
-      style="display: flex;
-      flex-direction: column;
-      align-items: center;">
-      <HomeGrid style="margin-top: 30px;" />
-      <SubInfo />
+    <main style="display: flex; flex-direction: column; align-items: center;">
+      <HomeGrid style="margin-top: 30px;" id="home" />
+      <SubInfo /> <!-- Not a scrollable section -->
     </main>
-    <AboutMe style="margin: 70px 0 0 90px;"/>
-    <Projects style="margin: 100px 0 0 90px;"/>
-    <Contact style="margin: 100px 0 0 90px;"/>
+
+    <AboutMe id="about" style="margin: 70px 0 0 90px;" />
+    <Projects id="projects" style="margin: 100px 0 0 90px;" />
+    <Contact id="contact" style="margin: 100px 0 0 90px;" />
     <footer
       style="display: flex;
       align-items: center;
