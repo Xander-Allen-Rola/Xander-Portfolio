@@ -12,7 +12,8 @@ import SocialsButtons from './components/SocialsButtons.vue'
 
 <template>
   <div
-  style="max-width: 1300px;
+  style="max-width: 1480px;
+  border: red 2px solid;
   position: absolute;
   left: 50%;
   top: 30px;                /* Anchor to top */
@@ -20,7 +21,8 @@ import SocialsButtons from './components/SocialsButtons.vue'
     <header
     style="display: flex;
     align-items: center;
-    justify-content: center; /* Center header items horizontally */">
+    justify-content: center;
+    gap: 320px;">
       <XanderLogo />
       <NavigationButtons />
       <Profile />
@@ -28,13 +30,13 @@ import SocialsButtons from './components/SocialsButtons.vue'
     <main
     style="display: flex;
     flex-direction: column;
-    align-items: center; /* Center main items horizontally */">
+    align-items: center;">
         <HomeGrid style="margin-top: 30px;" />
         <SubInfo />
     </main>
-      <AboutMe style="margin-top:70px"/>
-      <Projects style="margin-top: 100px"/>
-      <Contact style="margin-top: 100px"/>
+      <AboutMe style="margin: 70px 0 0 90px;"/>
+      <Projects style="margin: 100px 0 0 90px;"/>
+      <Contact style="margin: 100px 0 0 90px;"/>
     <footer
     style="display: flex;
     align-items: center;

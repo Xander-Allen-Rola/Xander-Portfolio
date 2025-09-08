@@ -4,6 +4,8 @@ import ProfileButton from './buttons/ProfileButton.vue';
 </script>
 
 <template>
-    <CommonUseButton label="Hire Me"/>
-    <ProfileButton />
+    <div style="display: flex; align-items: center;">
+        <CommonUseButton label="Hire Me"/>
+        <ProfileButton />
+    </div>
 </template>
