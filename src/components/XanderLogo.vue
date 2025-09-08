@@ -1,20 +1,12 @@
 <template>
-    <div class="xander-logo">
-        <img alt="X logo" src="@/assets/icons/X_icon.png" />
-        <span class="ander">ander</span>
+    <div 
+    style="display: flex;
+    align-items: center;">
+        <img 
+        src="@/assets/icons/X_icon.png"
+        style="width: 56px;   /* Increase as needed */
+        height: 52px;  /* Increase as needed */" />
+        <span 
+        style="font-size: 24px; /* Increase as needed */ ">ander</span>
     </div>
 </template>
-
-<style scoped>
-.xander-logo {
-    display: flex;
-    align-items: center;
-}
-.xander-logo img {
-    width: 56px;   /* Increase as needed */
-    height: 52px;  /* Increase as needed */
-}
-.xander-logo .ander {
-    font-size: 24px; /* Increase as needed */
-}
-</style>
