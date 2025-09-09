@@ -9,7 +9,10 @@ import Projects from './components/Projects.vue'
 import Contact from './components/Contact.vue'
 import SocialsButtons from './components/SocialsButtons.vue'
 import ProfileButton from './components/buttons/ProfileButton.vue'
+import HireMeMenu from './components/HireMeMenu.vue'
+import CommonUseButton from './components/buttons/CommonUseButton.vue'  
 
+const showHireMeMenu = ref(false)
 const isSticky = ref(false)
 const sentinel = ref(null)
 let observer
@@ -70,6 +73,10 @@ onUnmounted(() => {
       margin-top: 100px">
       <XanderLogo />
       <SocialsButtons />
+      <CommonUseButton
+      label="Hire Me"
+      @click="showHireMeMenu = true"/>
+      <HireMeMenu v-if="showHireMeMenu" @close="showHireMeMenu = false" />
     </footer>
   </div>
 </template>
