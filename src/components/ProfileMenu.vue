@@ -28,7 +28,7 @@
 
       <!-- Resume Button -->
       <div class="resume-btn">
-        <a href="/resume.pdf" target="_blank">View Resume</a>
+        <button @click="window.open('/resume.pdf', '_blank')">View Resume</button>
       </div>
     </div>
   </div>
@@ -94,20 +94,35 @@
   margin-bottom: 16px;
 }
 
-.resume-btn a {
-  display: inline-block;
-  padding: 8px 16px;
-  background: linear-gradient(90deg, #FFD49C, #7A87FB);
-  color: #1C1C1C;
+.resume-btn button {
+  height: 42px;
   font-size: 14px;
-  font-weight: 600;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: 0.3s;
+  color: #222;
+  font-family: 'Poppins', sans-serif;
+  white-space: nowrap;
+  padding: 0 18px;
+  border: 2px solid transparent;
+  border-radius: 24px / 50%;
+  cursor: pointer;
+
+  /* Two layers: inner + border */
+  background:
+    linear-gradient(90deg, #7A87FB, #FFD49C, #7A87FB) padding-box,
+    linear-gradient(90deg, #FFD49C, #7A87FB, #FFD49C) border-box;
+
+  background-size: 200% 100%, 200% 100%;
+  background-position: left center, left center;
+  background-clip: padding-box, border-box;
+
+  transition:
+    background-position 0.6s ease-in-out,
+    filter 0.3s ease,
+    transform 0.3s;
 }
 
-.resume-btn a:hover {
-  opacity: 0.9;
+.resume-btn button:hover {
+  background-position: right center, right center;
+  filter: brightness(0.9);
   transform: translateY(-2px);
 }
 </style>

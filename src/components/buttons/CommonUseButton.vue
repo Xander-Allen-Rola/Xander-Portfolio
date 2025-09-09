@@ -42,13 +42,16 @@ const props = defineProps({
   background-position: left center, left center; /* start position */
   background-clip: padding-box, border-box;
 
-  transition: background-position 0.6s ease-in-out, filter 0.3s ease;
+  transition:
+    background-position 0.6s ease-in-out,
+    filter 0.3s ease,
+    transform 0.3s;
 }
 
 .nav-btn:hover {
-  /* move both gradients smoothly */
   background-position: right center, right center;
-  filter: brightness(1.08);
+  filter: brightness(0.9);
+  transform: translateY(-2px);
 }
 
 </style>
