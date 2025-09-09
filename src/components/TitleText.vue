@@ -27,8 +27,8 @@ const showHireMeMenu = ref(false)
       style="margin-top: 2rem; font-size: 1.1rem;"
     />
     <transition name="hireme-swipe">
-  <HireMeMenu v-if="showHireMeMenu" @close="showHireMeMenu = false" />
-</transition>
+      <HireMeMenu v-if="showHireMeMenu" @close="showHireMeMenu = false" />
+    </transition>
   </div>
 </template>
 

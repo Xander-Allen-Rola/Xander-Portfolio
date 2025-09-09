@@ -1,19 +1,35 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import ProfileMenu from '../ProfileMenu.vue'
 
 const showMenu = ref(false)
+const menuWrapper = ref(null) // reference for the wrapper
 
 function toggleMenu() {
   showMenu.value = !showMenu.value
 }
+
+// Close popup if clicking outside
+function handleClickOutside(event) {
+  if (menuWrapper.value && !menuWrapper.value.contains(event.target)) {
+    showMenu.value = false
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside)
+})
 </script>
 
 <template>
-  <div style="position: relative; display: inline-block;">
-    <button class="profile-btn" @click="toggleMenu">
+  <div ref="menuWrapper" style="position: relative; display: inline-block;">
+    <button class="profile-btn" @click.stop="toggleMenu">
       <FontAwesomeIcon :icon="faUser" />
     </button>
     <transition name="profile-popup">
@@ -24,6 +40,7 @@ function toggleMenu() {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 .profile-btn {
   width: 48px;
   height: 48px;
@@ -31,13 +48,11 @@ function toggleMenu() {
   flex-shrink: 0;
   cursor: pointer;
 
-  /* Two layers: inner + border */
   background:
     linear-gradient(90deg, #7A87FB, #FFD49C, #7A87FB) padding-box,
     linear-gradient(90deg, #FFD49C, #7A87FB, #FFD49C) border-box;
 
   border: 2px solid transparent;
-
   background-size: 200% 100%, 200% 100%;
   background-position: left center, left center;
   background-clip: padding-box, border-box;
