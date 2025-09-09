@@ -1,12 +1,23 @@
 <script setup>
+import { ref } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import ProfileMenu from '../ProfileMenu.vue' // Adjust the path if needed
+
+const showMenu = ref(false)
+
+function toggleMenu() {
+  showMenu.value = !showMenu.value
+}
 </script>
 
 <template>
-  <button class="profile-btn">
-    <FontAwesomeIcon :icon="faUser" />
-  </button>
+  <div style="position: relative; display: inline-block;">
+    <button class="profile-btn" @click="toggleMenu">
+      <FontAwesomeIcon :icon="faUser" />
+    </button>
+    <ProfileMenu v-if="showMenu" />
+  </div>
 </template>
 
 <style scoped>
@@ -36,4 +47,4 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
   background-position: right center, right center;
   filter: brightness(1.08);
 }
-</style>
+</style> 
