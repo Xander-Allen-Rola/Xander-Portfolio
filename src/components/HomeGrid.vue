@@ -16,7 +16,6 @@ export default {
       const cells = [];
       for (let row = 1; row <= 7; row++) {
         for (let col = 1; col <= 6; col++) {
-          // Only render merged cell once at top-left
           if (
             row === mergedArea.startRow &&
             col === mergedArea.startCol
@@ -30,9 +29,7 @@ export default {
                 gridColumn: `${mergedArea.startCol} / ${mergedArea.endCol + 1}`,
               },
             });
-          }
-          // Skip other cells in merged area
-          else if (
+          } else if (
             row >= mergedArea.startRow &&
             row <= mergedArea.endRow &&
             col >= mergedArea.startCol &&
@@ -55,65 +52,37 @@ export default {
       return cells;
     },
   },
+  mounted() {
+    // Add random animation delay & duration for each image
+    const imgs = document.querySelectorAll(".overlay-img");
+    imgs.forEach(img => {
+      const duration = 15 + Math.random() * 10; // 15–25s
+      const delay = Math.random() * 5; // stagger start
+      img.style.animationDuration = `${duration}s`;
+      img.style.animationDelay = `${delay}s`;
+    });
+  }
 };
 </script>
 
 <template>
-  <div 
-  style="display: flex;
-  justify-content: center;
-  width: 100vw;">
-    <div 
-    style="position: relative;
-    width: 1480px;
-    height: 710px;">
+  <div style="display: flex; justify-content: center; width: 100vw;">
+    <div style="position: relative; width: 1480px; height: 710px;">
       <!-- Overlay images -->
-      <img
-        alt="cylinder"
-        src="@/assets/images/cylinder.png"
-        class="overlay-img"
-        :style="{ top: '330px', left: '1120px' }"
-      />
-      <img
-        alt="pyramid"
-        src="@/assets/images/pyramid.png"
-        class="overlay-img pyramid-img"
-        :style="{ top: '380px', left: '-130px' }"
-      />
-      <img
-        alt="smoothcircle"
-        src="@/assets/images/smoothcircle.png"
-        class="overlay-img smoothcircle-img"
-        :style="{ top: '-12px', left: '30px' }"
-      />
-      <img
-        alt="spikedcircle"
-        src="@/assets/images/spikedcircle.png"
-        class="overlay-img spikedcircle-img"
-        :style="{ top: '-60px', left: '990px' }"
-      />
-      <img
-        alt="surfacedcircle"
-        src="@/assets/images/surfacedcircle.png"
-        class="overlay-img surfacedcircle-img"
-        :style="{ top: '280px', left: '530px' }"
-      />
+      <img alt="cylinder" src="@/assets/images/cylinder.png" class="overlay-img float" style="top: 330px; left: 1120px;" />
+      <img alt="pyramid" src="@/assets/images/pyramid.png" class="overlay-img float" style="top: 380px; left: -130px;" />
+      <img alt="smoothcircle" src="@/assets/images/smoothcircle.png" class="overlay-img float" style="top: -12px; left: 30px;" />
+      <img alt="spikedcircle" src="@/assets/images/spikedcircle.png" class="overlay-img float" style="top: -60px; left: 990px;" />
+      <img alt="surfacedcircle" src="@/assets/images/surfacedcircle.png" class="overlay-img float" style="top: 280px; left: 530px;" />
 
       <!-- The grid itself -->
       <div 
-      style="display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: repeat(7, 1fr);
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      position: relative;
-      z-index: 1;">
+        style="display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(7, 1fr);
+        width: 100%; height: 100%; background: transparent; position: relative; z-index: 1;">
         <div
           v-for="cell in cells"
           :key="`${cell.row}-${cell.col}`"
-          style="background: transparent;
-          border: 1px solid rgba(255, 255, 255, 0.2);"
+          style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.2);"
           :style="cell.style"
         >
           <TitleText v-if="cell.merged" />
@@ -129,5 +98,20 @@ export default {
   width: 430px;
   z-index: 0;
   pointer-events: none;
+}
+
+/* Floating random movement */
+@keyframes floatRandom {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(40px, -50px) rotate(5deg); }
+  50%  { transform: translate(-30px, 30px) rotate(-3deg); }
+  75%  { transform: translate(50px, 40px) rotate(4deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.float {
+  animation-name: floatRandom;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 </style>
