@@ -11,6 +11,7 @@ import SocialsButtons from './components/SocialsButtons.vue'
 import ProfileButton from './components/buttons/ProfileButton.vue'
 import HireMeMenu from './components/HireMeMenu.vue'
 import CommonUseButton from './components/buttons/CommonUseButton.vue'  
+import StarsOverlay from './components/StarsOverlay.vue'
 
 const showHireMeMenu = ref(false)
 const isSticky = ref(false)
@@ -33,6 +34,7 @@ onUnmounted(() => {
 </script>
 
 <template>
+  <StarsOverlay />
   <div
     style="max-width: 1480px;
     position: absolute;

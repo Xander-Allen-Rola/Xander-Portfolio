@@ -8,9 +8,22 @@ const mergedArea = {
   endCol: 5,
 };
 
+// number of stars
+const STAR_COUNT = 20;
+
 export default {
   name: "HomeGrid",
   components: { TitleText },
+  data() {
+    return {
+      stars: Array.from({ length: STAR_COUNT }, () => ({
+        x: Math.random() * 1480, // random X in container
+        y: Math.random() * 710,  // random Y in container
+        size: 2 + Math.random() * 3, // random size 2-5px
+        delay: Math.random() * 5, // random animation delay
+      })),
+    };
+  },
   computed: {
     cells() {
       const cells = [];
@@ -53,7 +66,6 @@ export default {
     },
   },
   mounted() {
-    // Add random animation delay & duration for each image
     const imgs = document.querySelectorAll(".overlay-img");
     imgs.forEach(img => {
       const duration = 15 + Math.random() * 10; // 15–25s
@@ -68,6 +80,21 @@ export default {
 <template>
   <div style="display: flex; justify-content: center; width: 100vw;">
     <div style="position: relative; width: 1480px; height: 710px;">
+
+      <!-- Shimmering stars -->
+      <div
+        v-for="(star, index) in stars"
+        :key="index"
+        class="star"
+        :style="{
+          top: star.y + 'px',
+          left: star.x + 'px',
+          width: star.size + 'px',
+          height: star.size + 'px',
+          animationDelay: star.delay + 's'
+        }"
+      ></div>
+
       <!-- Overlay images -->
       <img alt="cylinder" src="@/assets/images/cylinder.png" class="overlay-img float" style="top: 330px; left: 1120px;" />
       <img alt="pyramid" src="@/assets/images/pyramid.png" class="overlay-img float" style="top: 380px; left: -130px;" />
@@ -100,7 +127,7 @@ export default {
   pointer-events: none;
 }
 
-/* Floating random movement */
+/* Floating random movement for images */
 @keyframes floatRandom {
   0%   { transform: translate(0, 0) rotate(0deg); }
   25%  { transform: translate(40px, -50px) rotate(5deg); }
@@ -113,5 +140,21 @@ export default {
   animation-name: floatRandom;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+}
+
+/* Stars */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  z-index: 0;
+  animation: shimmer 2s infinite alternate;
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0.2; transform: scale(0.8); }
 }
 </style>
