@@ -26,27 +26,6 @@ const showHireMeMenu = ref(false)
       :width="'160px'"
       style="margin-top: 2rem; font-size: 1.1rem;"
     />
-    <transition name="hireme-swipe">
-      <HireMeMenu v-if="showHireMeMenu" @close="showHireMeMenu = false" />
-    </transition>
+    <HireMeMenu v-if="showHireMeMenu" @close="showHireMeMenu = false" />
   </div>
 </template>
-
-<style scoped>
-.hireme-swipe-enter-active,
-.hireme-swipe-leave-active {
-  transition:
-    opacity 0.4s cubic-bezier(.4,2,.6,1),
-    transform 0.4s cubic-bezier(.4,2,.6,1);
-}
-.hireme-swipe-enter-from,
-.hireme-swipe-leave-to {
-  opacity: 0;
-  transform: translateY(60px) scale(0.98);
-}
-.hireme-swipe-enter-to,
-.hireme-swipe-leave-from {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-</style> 
