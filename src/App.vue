@@ -2,13 +2,13 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import XanderLogo from './components/XanderLogo.vue'
 import NavigationButtons from './components/Navigation.vue'
-import Profile from './components/Profile.vue'
 import HomeGrid from './components/HomeGrid.vue'
 import SubInfo from './components/SubInfo.vue'
 import AboutMe from './components/AboutMe.vue'
 import Projects from './components/Projects.vue'
 import Contact from './components/Contact.vue'
 import SocialsButtons from './components/SocialsButtons.vue'
+import ProfileButton from './components/buttons/ProfileButton.vue'
 
 const isSticky = ref(false)
 const sentinel = ref(null)
@@ -51,7 +51,7 @@ onUnmounted(() => {
       </div>
       <NavigationButtons />
       <div :class="['swipe-anim', { 'swipe-hide': isSticky }]">
-        <Profile />
+        <ProfileButton />
       </div>
     </header>
     <main style="display: flex; flex-direction: column; align-items: center;">
@@ -70,7 +70,6 @@ onUnmounted(() => {
       margin-top: 100px">
       <XanderLogo />
       <SocialsButtons />
-      <Profile />
     </footer>
   </div>
 </template>

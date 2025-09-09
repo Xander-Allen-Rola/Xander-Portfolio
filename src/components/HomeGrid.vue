@@ -1,3 +1,63 @@
+<script>
+import TitleText from './TitleText.vue';
+
+const mergedArea = {
+  startRow: 2,
+  endRow: 4,
+  startCol: 2,
+  endCol: 5,
+};
+
+export default {
+  name: "HomeGrid",
+  components: { TitleText },
+  computed: {
+    cells() {
+      const cells = [];
+      for (let row = 1; row <= 7; row++) {
+        for (let col = 1; col <= 6; col++) {
+          // Only render merged cell once at top-left
+          if (
+            row === mergedArea.startRow &&
+            col === mergedArea.startCol
+          ) {
+            cells.push({
+              row,
+              col,
+              merged: true,
+              style: {
+                gridRow: `${mergedArea.startRow} / ${mergedArea.endRow + 1}`,
+                gridColumn: `${mergedArea.startCol} / ${mergedArea.endCol + 1}`,
+              },
+            });
+          }
+          // Skip other cells in merged area
+          else if (
+            row >= mergedArea.startRow &&
+            row <= mergedArea.endRow &&
+            col >= mergedArea.startCol &&
+            col <= mergedArea.endCol
+          ) {
+            continue;
+          } else {
+            cells.push({
+              row,
+              col,
+              merged: false,
+              style: {
+                gridRow: row,
+                gridColumn: col,
+              },
+            });
+          }
+        }
+      }
+      return cells;
+    },
+  },
+};
+</script>
+
 <template>
   <div 
   style="display: flex;
@@ -62,66 +122,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import TitleText from './TitleText.vue';
-
-const mergedArea = {
-  startRow: 2,
-  endRow: 4,
-  startCol: 2,
-  endCol: 5,
-};
-
-export default {
-  name: "HomeGrid",
-  components: { TitleText },
-  computed: {
-    cells() {
-      const cells = [];
-      for (let row = 1; row <= 7; row++) {
-        for (let col = 1; col <= 6; col++) {
-          // Only render merged cell once at top-left
-          if (
-            row === mergedArea.startRow &&
-            col === mergedArea.startCol
-          ) {
-            cells.push({
-              row,
-              col,
-              merged: true,
-              style: {
-                gridRow: `${mergedArea.startRow} / ${mergedArea.endRow + 1}`,
-                gridColumn: `${mergedArea.startCol} / ${mergedArea.endCol + 1}`,
-              },
-            });
-          }
-          // Skip other cells in merged area
-          else if (
-            row >= mergedArea.startRow &&
-            row <= mergedArea.endRow &&
-            col >= mergedArea.startCol &&
-            col <= mergedArea.endCol
-          ) {
-            continue;
-          } else {
-            cells.push({
-              row,
-              col,
-              merged: false,
-              style: {
-                gridRow: row,
-                gridColumn: col,
-              },
-            });
-          }
-        }
-      }
-      return cells;
-    },
-  },
-};
-</script>
 
 <style scoped>
 .overlay-img {

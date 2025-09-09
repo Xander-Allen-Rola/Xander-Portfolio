@@ -11,10 +11,17 @@ const props = defineProps({
     type: String
   }
 })
+
+const emit = defineEmits(['click'])
 </script>
 
 <template>
-  <button class="nav-btn" :class="props.class" :style="props.width ? { width: props.width } : {}">
+  <button
+    class="nav-btn"
+    :class="props.class"
+    :style="props.width ? { width: props.width } : {}"
+    @click="$emit('click')"
+  >
     <slot>{{ label }}</slot>
   </button>
 </template>
