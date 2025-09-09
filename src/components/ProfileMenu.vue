@@ -2,11 +2,12 @@
   <div class="profile-card">
     <!-- Profile Image -->
     <div class="profile-left">
-      <img 
+      <div class="profile-photo-border">
+        <img 
         src="@/assets/images/profilephoto.png" 
         alt="Profile photo"
-        class="profile-photo"
-      />
+        class="profile-photo"/>
+      </div>
     </div>
 
     <!-- Text Section -->
@@ -60,11 +61,19 @@
   align-items: center;
 }
 
+.profile-photo-border {
+  background: linear-gradient(90deg, #7A87FB, #FFD49C);
+  padding: 3px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 .profile-photo {
   height: 120px;
   width: 120px;
   border-radius: 50%;
-  border: 3px solid #FFD49C;
+  background: #fff; /* fallback for image area */
+  display: block;
   object-fit: cover;
 }
 
