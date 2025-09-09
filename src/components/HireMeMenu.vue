@@ -132,14 +132,76 @@ function emitClose() {
 }
 
 /* Form styling */
-.title { font-size: 20px; font-weight: bold; margin-bottom: 4px; text-align: center; }
-.subtitle { font-size: 13px; color: #bbb; margin-bottom: 16px; text-align: center; }
-.form { display:flex; flex-direction:column; gap:12px; }
-.form-group label { font-size:13px; margin-bottom:4px; display:block; color:#ccc; }
-.input { width:100%; padding:8px 10px; border-radius:8px; border:1px solid #444; background:#2a2a2a; color:#fff; font-size:14px; outline:none; transition:border 0.2s; }
-.input:focus { border: 1px solid #FFD49C; }
+.title { 
+  font-size: 20px; 
+  font-weight: bold; 
+  margin-bottom: 4px; 
+  text-align: center; 
+}
+.subtitle { 
+  font-size: 13px; 
+  color: #bbb; 
+  margin-bottom: 16px; 
+  text-align: center; 
+}
+.form { 
+  display:flex; 
+  flex-direction:column; 
+  gap:12px; 
+}
+.form-group label { 
+  font-size:13px; 
+  margin-bottom:4px; 
+  display:block; 
+  color:#ccc; 
+}
+.input { 
+  width:100%; 
+  padding:8px 10px; 
+  border-radius:8px; 
+  border:1px solid #444; 
+  background:#2a2a2a; 
+  color:#fff; 
+  font-size:14px; 
+  outline:none; 
+  transition:border 0.2s; 
+}
+.input:focus { 
+  border: 1px solid #FFD49C; 
+}
 textarea.input { resize: none; }
-.submit-btn { display:flex; justify-content:flex-end; margin-top:10px; }
-.submit-btn button { padding:10px 18px; background:linear-gradient(90deg,#FFD49C,#7A87FB); color:#1C1C1C; font-weight:600; border:none; border-radius:8px; cursor:pointer; transition:0.3s; }
-.submit-btn button:hover { opacity:0.95; transform: translateY(-2px); }
+.submit-btn { 
+  display:flex; 
+  justify-content:flex-end; 
+  margin-top:10px; 
+}
+.submit-btn button { 
+  padding:10px 18px; 
+  background:linear-gradient(90deg,#FFD49C,#7A87FB); 
+  color:#1C1C1C; 
+  font-weight: bold;
+  border: 2px solid transparent;
+  border-radius: 24px / 50%;
+  cursor: pointer;
+
+  /* Two layers: inner + border */
+  background:
+    linear-gradient(90deg, #7A87FB, #FFD49C, #7A87FB) padding-box,
+    linear-gradient(90deg, #FFD49C, #7A87FB, #FFD49C) border-box;
+
+  background-size: 200% 100%, 200% 100%; /* both layers movable */
+  background-position: left center, left center; /* start position */
+  background-clip: padding-box, border-box;
+
+  transition:
+    background-position 0.6s ease-in-out,
+    filter 0.3s ease,
+    transform 0.3s;
+  
+}
+.submit-btn button:hover { 
+  background-position: right center, right center;
+  filter: brightness(0.9);
+  transform: translateY(-2px);
+}
 </style>
