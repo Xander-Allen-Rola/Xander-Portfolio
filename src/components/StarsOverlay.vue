@@ -1,104 +1,103 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-const STAR_COUNT = 80
-const SHOOTING_STAR_CHANCE = 0.005 // chance per frame
+const STAR_COUNT = 200
 const stars = ref([])
-const shootingStars = ref([])
-let animationFrame = null
+let lastScrollY = window.scrollY
+let width = window.innerWidth
+let height = window.innerHeight
+const fov = 300
+const MAX_DEPTH = 1200
 
+// Small constant forward drift
+const BASE_FORWARD_SPEED = 0.5
+
+// Generate stars
 function generateStars() {
-  stars.value = Array.from({ length: STAR_COUNT }, () => {
-    const depth = Math.random()
-    return {
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      size: 1 + depth * 3,
-      vx: (Math.random() - 0.5) * 0.2 * (0.5 + depth),
-      vy: (Math.random() - 0.5) * 0.2 * (0.5 + depth),
-      delay: Math.random() * 5,
-      opacity: 0.2 + depth * 0.8,
+  stars.value = Array.from({ length: STAR_COUNT }, () => ({
+    x: Math.random() * width - width / 2,
+    y: Math.random() * height - height / 2,
+    z: Math.random() * 1000 + 200,
+    size: 2 + Math.random() * 2,
+    zSpeed: BASE_FORWARD_SPEED // initial base forward speed
+  }))
+}
+
+// Animate stars per frame
+function animateStars() {
+  stars.value.forEach(star => {
+    star.z -= star.zSpeed
+    star.zSpeed *= 0.9
+    // Always add base forward speed
+    star.zSpeed += BASE_FORWARD_SPEED * 0.05
+
+    // Reset star if too close or too far
+    if (star.z < 1) {
+      star.z = MAX_DEPTH
+      star.x = Math.random() * width - width / 2
+      star.y = Math.random() * height - height / 2
+      star.zSpeed = BASE_FORWARD_SPEED
+    }
+    if (star.z > MAX_DEPTH) {
+      star.z = 1
+      star.x = Math.random() * width - width / 2
+      star.y = Math.random() * height - height / 2
+      star.zSpeed = BASE_FORWARD_SPEED
+    }
+  })
+  requestAnimationFrame(animateStars)
+}
+
+// Scroll accelerates stars
+function onScroll() {
+  const scrollDelta = window.scrollY - lastScrollY
+  lastScrollY = window.scrollY
+
+  if (scrollDelta === 0) return
+
+  const forwardFactor = 0.12
+  const backwardFactor = 0.04
+
+  stars.value.forEach(star => {
+    if (scrollDelta > 0) {
+      star.zSpeed += scrollDelta * forwardFactor * Math.random()
+    } else {
+      star.zSpeed += scrollDelta * backwardFactor * Math.random()
     }
   })
 }
 
-function animateStars() {
-  stars.value.forEach(star => {
-    star.x += star.vx
-    star.y += star.vy
-    if (star.x < 0 || star.x > window.innerWidth - star.size) star.vx *= -1
-    if (star.y < 0 || star.y > window.innerHeight - star.size) star.vy *= -1
-  })
-
-  // Occasionally spawn shooting stars
-  if (Math.random() < SHOOTING_STAR_CHANCE) {
-    const startX = Math.random() * window.innerWidth * 0.8
-    const startY = Math.random() * window.innerHeight * 0.5
-    const length = 150 + Math.random() * 100
-    const speed = 6 + Math.random() * 4
-    shootingStars.value.push({
-      x: startX,
-      y: startY,
-      length,
-      vx: speed,
-      vy: speed,
-      life: 0
-    })
-  }
-
-  // Animate shooting stars
-  shootingStars.value = shootingStars.value.filter(star => {
-    star.x += star.vx
-    star.y += star.vy
-    star.life += 1
-    return star.life < 30 // remove after short distance
-  })
-
-  animationFrame = requestAnimationFrame(animateStars)
-}
-
 function handleResize() {
+  width = window.innerWidth
+  height = window.innerHeight
   generateStars()
 }
 
 onMounted(() => {
   generateStars()
   animateStars()
+  window.addEventListener('scroll', onScroll)
   window.addEventListener('resize', handleResize)
 })
 
 onBeforeUnmount(() => {
-  cancelAnimationFrame(animationFrame)
+  window.removeEventListener('scroll', onScroll)
   window.removeEventListener('resize', handleResize)
 })
 </script>
 
 <template>
   <div class="stars-overlay">
-    <!-- Normal stars -->
     <div
-      v-for="(star, index) in stars"
-      :key="'star-' + index"
+      v-for="(star, i) in stars"
+      :key="i"
       class="star"
       :style="{
-        top: star.y + 'px',
-        left: star.x + 'px',
-        width: star.size + 'px',
-        height: star.size + 'px',
-        opacity: star.opacity,
-        animationDelay: star.delay + 's'
-      }"
-    ></div>
-
-    <!-- Shooting stars -->
-    <div
-      v-for="(star, index) in shootingStars"
-      :key="'shoot-' + index"
-      class="shooting-star"
-      :style="{
-        top: star.y + 'px',
-        left: star.x + 'px',
-        width: star.length + 'px',
+        left: `${width / 2 + (star.x * fov / star.z)}px`,
+        top: `${height / 2 + (star.y * fov / star.z)}px`,
+        width: `${star.size * fov / star.z}px`,
+        height: `${star.size * fov / star.z}px`,
+        opacity: `${1 - star.z / MAX_DEPTH}`
       }"
     ></div>
   </div>
@@ -112,27 +111,14 @@ onBeforeUnmount(() => {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
+  overflow: hidden;
   z-index: -1;
+  background: black;
 }
 
 .star {
   position: absolute;
   background: white;
   border-radius: 50%;
-  animation: shimmer 2s infinite alternate;
-}
-
-@keyframes shimmer {
-  0% { transform: scale(0.8); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(0.8); }
-}
-
-.shooting-star {
-  position: absolute;
-  height: 2px;
-  background: linear-gradient(45deg, white, rgba(255,255,255,0));
-  transform: rotate(45deg);
-  opacity: 0.8;
 }
 </style>
