@@ -1,3 +1,10 @@
+<script setup>
+function openResume() {
+  // Opens resume.pdf in a new tab
+  window.open('https://drive.google.com/file/d/1-DFpphPW5lBp0xDHNhBt113Xz2H2kKvO/view?usp=sharing', '_blank', 'noopener,noreferrer')
+}
+</script>
+
 <template>
   <div class="profile-card">
     <!-- Profile Image -->
@@ -29,7 +36,7 @@
 
       <!-- Resume Button -->
       <div class="resume-btn">
-        <button @click="window.open('/resume.pdf', '_blank')">View Resume</button>
+        <button @click="openResume">View Resume</button>
       </div>
     </div>
   </div>
