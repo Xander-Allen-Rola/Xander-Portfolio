@@ -29,5 +29,14 @@ const props = defineProps({
   border-radius: 999px;
   font-family: 'Poppins', sans-serif;
   z-index: 1; /* above the indicator */
+
+  transition:
+    filter 0.3s ease,
+    transform 0.3s;
+}
+
+.nav-btn:hover {
+  filter: brightness(0.9);
+  transform: translateY(-2px);
 }
 </style>
