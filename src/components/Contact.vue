@@ -31,8 +31,8 @@ import CommonUseButton from './buttons/CommonUseButton.vue'
       
           <p>📩 Email: rolaxanderallen2002@gmail.com <br>
           📱 Phone: +63 916 147 1367 <br>
-          🌐 LinkedIn: linkedin.com/in/xander-allen-rola <br>
-          💻 GitHub: github.com/Xander-Allen-Rola</p>
+          🌐 LinkedIn: <a href="https://linkedin.com/in/xander-allen-rola" target="_blank" rel="noopener noreferrer">linkedin.com/in/xander-allen-rola</a> <br>
+          💻 GitHub: <a href="https://github.com/Xander-Allen-Rola" target="_blank" rel="noopener noreferrer">github.com/Xander-Allen-Rola</a></p>
           <CommonUseButton label="Send me a message" width="230px"/>
     </div>
     <img src="../assets/images/contactmeformal.svg" style="height: 450px;  "/>

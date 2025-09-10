@@ -5,20 +5,24 @@ import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+
+function goTo(url) {
+  window.open(url, "_blank", "noopener,noreferrer")
+}
 </script>
 
 <template>
   <nav class="socials">
-    <NavButton>
+    <NavButton class="nav-btn" @click="goTo('https://www.linkedin.com/in/xander-allen-rola/')">
       <FontAwesomeIcon :icon="faLinkedinIn" />
     </NavButton>
-    <NavButton>
+    <NavButton class="nav-btn" @click="goTo('https://github.com/Xander-Allen-Rola')">
       <FontAwesomeIcon :icon="faGithub" />
     </NavButton>
-    <NavButton>
+    <NavButton class="nav-btn" @click="goTo('https://www.facebook.com/xander.a.r02')">
       <FontAwesomeIcon :icon="faFacebookF" />
     </NavButton>
-    <NavButton>
+    <NavButton class="nav-btn" @click="goTo('https://www.instagram.com/xanderola.a/')">
       <FontAwesomeIcon :icon="faInstagram" />
     </NavButton>
   </nav>
@@ -28,27 +32,24 @@ import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 .socials {
   position: relative;
   display: flex;
+  padding: 5px 10px;
+  gap: 12px;
   align-items: center;
-  margin-left: 350px;
-  margin-right: 350px; /* top right bottom left */
-  min-height: 56px;
   border-radius: 999px;
-  background: #1C1C1C; /* or transparent if you prefer */
-  z-index: 1;
+  border: 2px solid transparent;
+  background: 
+    linear-gradient(#1C1C1C, #1C1C1C) padding-box,
+    linear-gradient(90deg, #FFD49C, #7A87FB) border-box;
+  background-clip: padding-box, border-box;
 }
 
-.socials::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+.nav-btn {
   border-radius: 999px;
-  padding: 2px; /* thickness of the outline */
-  background: linear-gradient(to right, #FFD49C, #7A87FB);
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  z-index: -1;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #292929;
+  transform: scale(1.08);
 }
 </style>
