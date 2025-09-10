@@ -13,15 +13,10 @@ import ProjectImgPlaceholder from '@/assets/images/projectplaceholder.png'
             <img src="../assets/icons/doublestar.svg" style="height: 35px;"/>
         </div>
         <div 
-        style="display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 50px;
+        style="display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 60px;
         margin-top: 50px;">
-            <Project name="Project Name"
-            description="Description of the project goes here. 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            :image="ProjectImgPlaceholder" />
             <Project name="Project Name"
             description="Description of the project goes here. 
             Lorem ipsum dolor sit amet, consectetur adipiscing elit."
