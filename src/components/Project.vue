@@ -28,7 +28,7 @@ function toggleFlip() {
     <div class="card-back">
       <div class="project-text">
         <h1>{{ name }}</h1>
-        <p>{{ description }}</p>
+        <p style="text-align: justify;">{{ description }}</p>
       </div>
     </div>
   </div>
