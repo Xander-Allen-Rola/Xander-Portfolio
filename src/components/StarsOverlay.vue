@@ -1,37 +1,63 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
+// Import planets
+import planet1 from '@/assets/images/planets/planet1.svg'
+import planet2 from '@/assets/images/planets/planet2.svg'
+import planet3 from '@/assets/images/planets/planet3.svg'
+import planet4 from '@/assets/images/planets/planet4.svg'
+
+const planetImages = [planet1, planet2, planet3, planet4]
+
 const STAR_COUNT = 200
 const stars = ref([])
+const currentPlanet = ref(null)
+
+let planetIndex = 0
 let lastScrollY = window.scrollY
 let width = window.innerWidth
 let height = window.innerHeight
 const fov = 300
 const MAX_DEPTH = 1200
-
-// Small constant forward drift
 const BASE_FORWARD_SPEED = 0.5
 
-// Generate stars
+// Generate stars + initial planet
 function generateStars() {
   stars.value = Array.from({ length: STAR_COUNT }, () => ({
     x: Math.random() * width - width / 2,
     y: Math.random() * height - height / 2,
     z: Math.random() * 1000 + 200,
     size: 2 + Math.random() * 2,
-    zSpeed: BASE_FORWARD_SPEED // initial base forward speed
+    zSpeed: BASE_FORWARD_SPEED
   }))
+
+  spawnPlanet()
 }
 
-// Animate stars per frame
+// Spawn a new planet
+function spawnPlanet() {
+  planetIndex = (planetIndex + 1) % planetImages.length
+  currentPlanet.value = {
+    img: planetImages[planetIndex],
+    x: Math.random() * width - width / 2,
+    y: Math.random() * height - height / 2,
+    z: 1000,
+    size: 500 + Math.random() * 300,
+    driftX: (Math.random() - 0.5) * 0.2,
+    driftY: (Math.random() - 0.5) * 0.2,
+    rotation: 0,
+    rotationSpeed: (Math.random() - 0.5) * 0.1
+  }
+}
+
+// Animate stars and planet
 function animateStars() {
+  // stars
   stars.value.forEach(star => {
     star.z -= star.zSpeed
     star.zSpeed *= 0.9
-    // Always add base forward speed
     star.zSpeed += BASE_FORWARD_SPEED * 0.05
 
-    // Reset star if too close or too far
     if (star.z < 1) {
       star.z = MAX_DEPTH
       star.x = Math.random() * width - width / 2
@@ -45,19 +71,35 @@ function animateStars() {
       star.zSpeed = BASE_FORWARD_SPEED
     }
   })
+
+  // planet
+  if (currentPlanet.value) {
+    currentPlanet.value.z -= BASE_FORWARD_SPEED * 0.5
+
+    // drift + rotation
+    currentPlanet.value.x += currentPlanet.value.driftX
+    currentPlanet.value.y += currentPlanet.value.driftY
+    currentPlanet.value.rotation += currentPlanet.value.rotationSpeed
+
+    // fade + respawn
+    if (currentPlanet.value.z < 50 || currentPlanet.value.z > MAX_DEPTH + 200) {
+      spawnPlanet()
+    }
+  }
+
   requestAnimationFrame(animateStars)
 }
 
-// Scroll accelerates stars
+// Scroll accelerates stars + planet
 function onScroll() {
   const scrollDelta = window.scrollY - lastScrollY
   lastScrollY = window.scrollY
-
   if (scrollDelta === 0) return
 
   const forwardFactor = 0.12
   const backwardFactor = 0.04
 
+  // stars
   stars.value.forEach(star => {
     if (scrollDelta > 0) {
       star.zSpeed += scrollDelta * forwardFactor * Math.random()
@@ -65,6 +107,15 @@ function onScroll() {
       star.zSpeed += scrollDelta * backwardFactor * Math.random()
     }
   })
+
+  // planet
+  if (currentPlanet.value) {
+    if (scrollDelta > 0) {
+      currentPlanet.value.z -= scrollDelta * 0.3
+    } else {
+      currentPlanet.value.z += Math.abs(scrollDelta) * 0.2 // backward
+    }
+  }
 }
 
 function handleResize() {
@@ -86,8 +137,10 @@ onBeforeUnmount(() => {
 })
 </script>
 
+
 <template>
   <div class="stars-overlay">
+    <!-- stars -->
     <div
       v-for="(star, i) in stars"
       :key="i"
@@ -100,6 +153,22 @@ onBeforeUnmount(() => {
         opacity: `${1 - star.z / MAX_DEPTH}`
       }"
     ></div>
+
+    <!-- planet -->
+    <img
+      v-if="currentPlanet"
+      class="planet"
+      :src="currentPlanet.img"
+      :style="{
+        left: `${width / 2 + (currentPlanet.x * fov / currentPlanet.z)}px`,
+        top: `${height / 2 + (currentPlanet.y * fov / currentPlanet.z)}px`,
+        width: `${currentPlanet.size * fov / currentPlanet.z}px`,
+        height: `${currentPlanet.size * fov / currentPlanet.z}px`,
+        opacity: `${Math.pow(1 - currentPlanet.z / MAX_DEPTH, 0.4)}`,
+        transform: `rotate(${currentPlanet.rotation}deg)`
+      }"
+    />
+
   </div>
 </template>
 
@@ -120,5 +189,11 @@ onBeforeUnmount(() => {
   position: absolute;
   background: white;
   border-radius: 50%;
+}
+
+.planet {
+  position: absolute;
+  object-fit: contain;
+  transition: opacity 0.2s linear;
 }
 </style>
