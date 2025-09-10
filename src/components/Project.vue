@@ -15,20 +15,22 @@ function toggleFlip() {
 </script>
 
 <template>
-  <div class="project-card" :class="{ flipped: flipped }" @click="toggleFlip">
-    <!-- Front -->
-    <div class="card-front">
-      <img :src="image" class="project-image" />
-      <div class="project-text">
-        <h1>{{ name }}</h1>
+  <div class="project-card" @click="toggleFlip">
+    <div class="card-inner" :class="{ flipped: flipped }">
+      <!-- Front -->
+      <div class="card-front">
+        <img :src="image" class="project-image" />
+        <div class="project-text">
+          <h1>{{ name }}</h1>
+        </div>
       </div>
-    </div>
 
-    <!-- Back -->
-    <div class="card-back">
-      <div class="project-text">
-        <h1>{{ name }}</h1>
-        <p style="text-align: justify;">{{ description }}</p>
+      <!-- Back -->
+      <div class="card-back">
+        <div class="project-text">
+          <h1>{{ name }}</h1>
+          <p style="text-align: justify;">{{ description }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -46,6 +48,33 @@ function toggleFlip() {
   animation: float 6s ease-in-out infinite;
 }
 
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: 12px;
+}
+
+/* Hover goes with the flipping */
+.project-card:hover .card-inner {
+  box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3), 0 0 30px rgba(0, 255, 255, 0.2);
+}
+
+.project-card:hover .card-inner.flipped {
+  transform: rotateY(180deg) translateY(-10px) rotate(-1deg);
+}
+
+.project-card:hover .card-inner:not(.flipped) {
+  transform: translateY(-10px) rotate(-1deg);
+}
+
+/* Flip effect on click */
+.card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
 .card-front,
 .card-back {
   width: 100%;
@@ -55,7 +84,6 @@ function toggleFlip() {
   top: 0;
   left: 0;
   backface-visibility: hidden;
-  transition: transform 0.6s;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,15 +119,6 @@ function toggleFlip() {
 /* Back card content */
 .card-back {
   transform: rotateY(180deg);
-}
-
-/* Flip effect on click */
-.project-card.flipped .card-front {
-  transform: rotateY(180deg);
-}
-
-.project-card.flipped .card-back {
-  transform: rotateY(0deg);
 }
 
 /* Floating animation */
