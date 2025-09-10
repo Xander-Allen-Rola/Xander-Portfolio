@@ -1,5 +1,9 @@
 <script setup>
+import { ref } from 'vue'
 import CommonUseButton from './buttons/CommonUseButton.vue'
+import MessageMenu from './MessageMenu.vue'
+
+const showMessageMenu = ref(false)
 </script>
 
 <template>
@@ -33,7 +37,11 @@ import CommonUseButton from './buttons/CommonUseButton.vue'
           📱 Phone: +63 916 147 1367 <br>
           🌐 LinkedIn: <a href="https://linkedin.com/in/xander-allen-rola" target="_blank" rel="noopener noreferrer">linkedin.com/in/xander-allen-rola</a> <br>
           💻 GitHub: <a href="https://github.com/Xander-Allen-Rola" target="_blank" rel="noopener noreferrer">github.com/Xander-Allen-Rola</a></p>
-          <CommonUseButton label="Send me a message" width="230px"/>
+          <CommonUseButton
+            label="Send me a message"
+            @click="showMessageMenu = true"
+            width="230px"/>
+          <MessageMenu v-if="showMessageMenu" @close="showMessageMenu = false" />
     </div>
     <img src="../assets/images/contactmeformal.svg" style="height: 450px;  "/>
   </div>
