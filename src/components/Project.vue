@@ -1,10 +1,13 @@
 <script setup>
 import { ref } from 'vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faGithubAlt } from '@fortawesome/free-brands-svg-icons'
 
 defineProps({
   name: String,
   description: String,
-  image: String
+  image: String,
+  githubLink: String // pass a GitHub link prop
 })
 
 const flipped = ref(false)
@@ -28,7 +31,19 @@ function toggleFlip() {
       <!-- Back -->
       <div class="card-back">
         <div class="project-text">
-          <h1>{{ name }}</h1>
+          <div class="title-text">
+            <h1 style="max-width: 400px;">{{ name }}</h1>
+            <!-- GitHub Button -->
+            <a 
+              :href="githubLink" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="github-btn"
+              @click.stop
+            >
+              <FontAwesomeIcon :icon="faGithubAlt" />
+            </a>
+          </div>
           <p style="text-align: justify;">{{ description }}</p>
         </div>
       </div>
@@ -44,7 +59,6 @@ function toggleFlip() {
   border-radius: 12px;
   cursor: pointer;
   position: relative;
-  /* Floating animation */
   animation: float 6s ease-in-out infinite;
 }
 
@@ -57,7 +71,6 @@ function toggleFlip() {
   border-radius: 12px;
 }
 
-/* Hover goes with the flipping */
 .project-card:hover .card-inner {
   box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3), 0 0 30px rgba(0, 255, 255, 0.2);
 }
@@ -70,7 +83,6 @@ function toggleFlip() {
   transform: translateY(-10px) rotate(-1deg);
 }
 
-/* Flip effect on click */
 .card-inner.flipped {
   transform: rotateY(180deg);
 }
@@ -87,6 +99,7 @@ function toggleFlip() {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   flex-direction: column;
   background: linear-gradient(145deg, #1b1b1b, #111);
   box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2), 0 0 20px rgba(0, 255, 255, 0.1);
@@ -94,20 +107,19 @@ function toggleFlip() {
   box-sizing: border-box;
 }
 
-/* Front content */
 .project-image {
   height: 80%;
   border-radius: 8px;
   object-fit: cover;
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .project-text {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  text-align: center;
   color: #fff;
 }
 
@@ -116,12 +128,56 @@ function toggleFlip() {
   font-size: 2rem;
 }
 
-/* Back card content */
 .card-back {
   transform: rotateY(180deg);
 }
 
-/* Floating animation */
+.title-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-align: center;
+}
+
+/* GitHub button styles */
+.github-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 12px; /* rounded square */
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 28px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.github-btn .fa-icon, .github-btn svg {
+  width: 1em;
+  height: 1em;
+  min-width: 28px;
+  min-height: 28px;
+  max-width: 36px;
+  max-height: 36px;
+  margin: auto;
+  display: block;
+}
+
+.github-btn:hover {
+  background: rgba(0, 255, 255, 0.15);
+  color: #00ffff;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+}
+
 @keyframes float {
   0% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-15px) rotate(1deg); }

@@ -1,6 +1,8 @@
 <script setup>
 import Project from './Project.vue'
 import ProjectImgPlaceholder from '@/assets/images/projectplaceholder.png'
+import xunspims from '@/assets/images/xunspims.png' 
+import emergentechoes from '@/assets/images/emergentechoes.png'
 </script>
 
 <template>
@@ -35,11 +37,32 @@ import ProjectImgPlaceholder from '@/assets/images/projectplaceholder.png'
             procedural approach can match the quality of 
             human-designed content, while offering greater 
             efficiency in game development."
-            :image="ProjectImgPlaceholder" />
-            <Project name="Project Name"
-            description="Description of the project goes here. 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            :image="ProjectImgPlaceholder" />
+            :image="emergentechoes"
+            githubLink="https://github.com/janrizmlibres/emergent-echoes.git" />
+            <Project name="XU-NSP Information Management System"
+            description="The XU-NSP Information Management System 
+            (IMS) is a comprehensive, offline-based information 
+            management system for Xavier University's Night 
+            School Program. It was developed to replace 
+            traditional spreadsheet methods and streamline 
+            administrative tasks for staff and administrators, 
+            providing intuitive data dashboards for metrics 
+            analysis and robust management tools for student, 
+            volunteer, staff, and class-related data. As a key 
+            contributor to this project, I specialized in the 
+            Data Dashboard and Volunteer Information Management. 
+            My work on the data dashboard provided administrators 
+            with at-a-glance insights into enrollment trends and 
+            demographics, significantly enhancing decision-making 
+            capabilities. For the volunteer management feature, 
+            I designed and implemented the functionality to add, 
+            view, update, and export volunteer data, which 
+            streamlined administrative processes. My role was 
+            essential in providing the program with powerful 
+            analytical tools and efficient data management for 
+            its volunteer staff."
+            :image="xunspims"
+            githubLink="https://github.com/janrizmlibres/nsp-ims-app.git" />
         </div>
     </div>
 </template>
