@@ -73,10 +73,7 @@ onUnmounted(() => {
 
     <!-- FOOTER -->
     <footer class="app-footer">
-      <XanderLogo />
       <SocialsButtons />
-      <CommonUseButton label="Hire Me" @click="showHireMeMenu = true"/>
-      <HireMeMenu v-if="showHireMeMenu" @close="showHireMeMenu = false" />
     </footer>
   </div>
 </template>
@@ -130,7 +127,7 @@ onUnmounted(() => {
 .app-footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   margin-top: 100px;
 }
