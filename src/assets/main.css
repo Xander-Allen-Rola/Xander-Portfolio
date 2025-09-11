@@ -28,12 +28,7 @@ p{
 }
 
 body{
-  overflow-x: hidden;
-}
-
-html, body {
-  overflow-x: hidden;
-  width: 100vw;
+  /* overflow-x: hidden; */
 }
 
 @media (hover: hover) {
