@@ -37,16 +37,7 @@ import emergentechoes from '@/assets/images/emergentechoes.png'
             githubLink="https://github.com/janrizmlibres/emergent-echoes.git"
             :tools="['Godot', 'C#']" />
             <Project name="Information Management System"
-            description="The XU-NSP Information Management System 
-            (IMS) is an offline system for Xavier University’s 
-            Night School Program that replaces spreadsheets and 
-            streamlines administrative tasks. I contributed to 
-            the Data Dashboard and Volunteer Management modules, 
-            providing at-a-glance enrollment insights and 
-            implementing features to add, view, update, and export 
-            volunteer data. My work enhanced decision-making and 
-            improved efficiency in managing student, staff, 
-            volunteer, and class information."
+            description="The XU-NSP Information Management System (IMS) is an offline system for Xavier University’s Night School Program that replaces spreadsheets and streamlines administrative tasks. I worked on the Data Dashboard and Volunteer Management modules, enabling quick enrollment insights and CRUD on volunteer data, improving efficiency in managing students, staff, volunteers, and classes."
             :image="xunspims"
             githubLink="https://github.com/janrizmlibres/nsp-ims-app.git"
             :tools="['JavaScript', 'Vue', 'Tailwind CSS', 'express.js', 'MariaDB']" />
