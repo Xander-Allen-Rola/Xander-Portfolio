@@ -67,9 +67,9 @@ onUnmounted(() => {
       <SubInfo />
     </main>
 
-    <AboutMe id="about" />
-    <Projects id="projects" />
-    <Contact id="contact" />
+    <AboutMe id="about" style="margin-top: 90px;"/>
+    <Projects id="projects" style="margin-top: 90px;"/>
+    <Contact id="contact" style="margin-top: 90px;"/>
 
     <!-- FOOTER -->
     <footer class="app-footer">

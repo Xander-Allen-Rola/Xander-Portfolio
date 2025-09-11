@@ -94,14 +94,13 @@ onBeforeUnmount(() => {
   align-items: flex-start;
   gap: 32px;
   perspective: 1200px;
-  border: blue 1px solid; /* debugging */
 }
 
 .about-title {
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-bottom: 65px;
+  margin-bottom: 40px;
 }
 
 .title-icon {
@@ -114,7 +113,6 @@ onBeforeUnmount(() => {
   justify-content: center;
   width: 100%;
   position: relative;
-  border: yellow 1px solid; /* debugging */
 }
 
 .orbit-wrapper {
@@ -123,13 +121,12 @@ onBeforeUnmount(() => {
   position: relative;
   margin: 0 50px; /* space for buttons */
   transform-style: preserve-3d;
-  border: green 1px solid; /* debugging */
+  justify-items: center;
 }
 
 .planet {
   position: absolute;
   top: 20%;
-  left: 35%;
   width: 400px;
   padding: 20px;
   border-radius: 20px;
@@ -139,7 +136,6 @@ onBeforeUnmount(() => {
   box-shadow: 0 0 15px rgba(255,255,255,0.1);
   transform-style: preserve-3d;
   transition: transform 0.4s ease, opacity 0.4s ease, z-index 0.4s ease;
-  border: orange 1px solid; /* debugging */
 }
 
 .planet h3 {
@@ -178,5 +174,23 @@ onBeforeUnmount(() => {
 
 .orbit-btn.right {
   right: 0;
+}
+
+@media (max-width: 767px) {
+  .planet {
+    width: 80%;
+  }
+  h3{
+    font-size: 21px;
+  }
+  p{
+    font-size: 14px;
+  }
+  .title-icon {
+    height: 30px;
+  }
+  .about-title{
+    gap: 15px;
+  }
 }
 </style>
