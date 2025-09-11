@@ -221,4 +221,8 @@ textarea.input { resize: none; }
   filter: brightness(0.9);
   transform: translateY(-2px);
 }
+
+.submit-btn:active {
+  transform: translateY(2px);
+}
 </style>

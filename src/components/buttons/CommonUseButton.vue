@@ -29,6 +29,7 @@ const emit = defineEmits(['click'])
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 .nav-btn {
   height: 48px;
   font-size: 16px;
@@ -61,4 +62,7 @@ const emit = defineEmits(['click'])
   transform: translateY(-2px);
 }
 
+.nav-btn:active {
+  transform: translateY(2px);
+}
 </style>

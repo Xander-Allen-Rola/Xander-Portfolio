@@ -38,8 +38,9 @@ const showMessageMenu = ref(false)
           🌐 LinkedIn: <a href="https://linkedin.com/in/xander-allen-rola" target="_blank" rel="noopener noreferrer">linkedin.com/in/xander-allen-rola</a> <br>
           💻 GitHub: <a href="https://github.com/Xander-Allen-Rola" target="_blank" rel="noopener noreferrer">github.com/Xander-Allen-Rola</a></p>
           <CommonUseButton
+            class="message-btn"
             label="Send me a message"
-            @click="showMessageMenu = true"
+            @click="showMessageMenu = true;"
             width="230px"/>
           <MessageMenu v-if="showMessageMenu" @close="showMessageMenu = false" />
     </div>

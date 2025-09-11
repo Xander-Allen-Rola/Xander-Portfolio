@@ -141,4 +141,8 @@ function openResume() {
   filter: brightness(0.9);
   transform: translateY(-2px);
 }
+
+.resume-btn:active {
+  transform: translateY(2px);
+}
 </style>

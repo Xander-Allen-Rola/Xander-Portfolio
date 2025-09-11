@@ -87,4 +87,8 @@ onBeforeUnmount(() => {
   opacity: 1;
   transform: scale(1) translateY(0);
 }
+
+.profile-btn:active {
+  transform: translateY(2px);
+}
 </style>
