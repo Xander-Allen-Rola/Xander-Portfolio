@@ -82,7 +82,8 @@ export default {
       style="position: relative; 
       display: flex; 
       justify-content: center; 
-      width: 1480px; 
+      width: 100%;
+      max-width: 1480px; 
       height: 710px;">
 
       <!-- Shimmering stars -->
