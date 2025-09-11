@@ -14,23 +14,23 @@
 
           <h3 class="title">Send a Message</h3>
 
-          <form class="form" @submit.prevent>
+          <form class="form" @submit.prevent="sendEmail">
             <!-- Email -->
             <div class="form-group">
               <label for="email">Email *</label>
-              <input type="text" id="email" class="input" required />
+              <input type="email" id="email" name="email" class="input" required />
             </div>
 
             <!-- Subject -->
             <div class="form-group">
               <label for="subject">Subject *</label>
-              <input type="text" id="subject" class="input" required />
+              <input type="text" id="subject" name="subject" class="input" required />
             </div>
 
-            <!-- Optional Message -->
+            <!-- Message -->
             <div class="form-group">
               <label for="message">Message *</label>
-              <textarea id="message" rows="3" class="input" required></textarea>
+              <textarea id="message" name="message" rows="3" class="input" required></textarea>
             </div>
 
             <!-- Submit -->
@@ -46,8 +46,9 @@
 
 <script setup>
 import { ref } from 'vue'
-const emit = defineEmits(['close'])
+import emailjs from 'emailjs-com'
 
+const emit = defineEmits(['close'])
 const show = ref(true)
 
 function startClose() {
@@ -56,6 +57,35 @@ function startClose() {
 
 function emitClose() {
   emit('close')
+}
+
+// Replace these with your EmailJS credentials
+const SERVICE_ID = 'service_22s53fh'
+const TEMPLATE_ID = 'template_349zpsk'
+const PUBLIC_KEY = '55lj-utl5r10SoUxs'
+
+function sendEmail(e) {
+  const form = e.target
+
+  emailjs.send(
+    SERVICE_ID,
+    TEMPLATE_ID,
+    {
+      email: form.email.value,
+      subject: form.subject.value,
+      message: form.message.value
+    },
+    PUBLIC_KEY
+  )
+  .then(() => {
+    alert('✅ Your message was sent successfully!')
+    form.reset()
+    startClose()
+  })
+  .catch((error) => {
+    console.error('Email send error:', error)
+    alert('❌ Failed to send the message. Please try again later.')
+  })
 }
 </script>
 
