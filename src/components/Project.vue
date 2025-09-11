@@ -64,7 +64,6 @@ function toggleFlip() {
   width: 100%;
   max-width: 550px;
   height: 620px;
-  min-width: 450px; /*consider removing this since the app contaier already has a min width*/
   perspective: 1000px;
   border-radius: 12px;
   cursor: pointer;

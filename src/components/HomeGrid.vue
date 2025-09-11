@@ -1,5 +1,10 @@
 <script>
 import TitleText from './TitleText.vue';
+import cylinder from '@/assets/images/cylinder.png';
+import pyramid from '@/assets/images/pyramid.png';
+import smoothcircle from '@/assets/images/smoothcircle.png';
+import spikedcircle from '@/assets/images/spikedcircle.png';
+import surfacedcircle from '@/assets/images/surfacedcircle.png';
 
 const mergedArea = {
   startRow: 2,
@@ -8,7 +13,6 @@ const mergedArea = {
   endCol: 5,
 };
 
-// number of stars
 const STAR_COUNT = 20;
 
 export default {
@@ -17,11 +21,18 @@ export default {
   data() {
     return {
       stars: Array.from({ length: STAR_COUNT }, () => ({
-        x: Math.random() * 1480, // random X in container
-        y: Math.random() * 710,  // random Y in container
-        size: 2 + Math.random() * 3, // random size 2-5px
-        delay: Math.random() * 5, // random animation delay
+        x: Math.random() * 100 + '%',
+        y: Math.random() * 100 + '%',
+        size: 2 + Math.random() * 3,
+        delay: Math.random() * 5,
       })),
+      images: [
+        { src: cylinder, top: 55, left: 82 },
+        { src: pyramid, top: 61, left: -2 },
+        { src: smoothcircle, top: 11, left: 8 },
+        { src: spikedcircle, top: 0, left: 73 },
+        { src: surfacedcircle, top: 46, left: 41 },
+      ],
     };
   },
   computed: {
@@ -68,8 +79,8 @@ export default {
   mounted() {
     const imgs = document.querySelectorAll(".overlay-img");
     imgs.forEach(img => {
-      const duration = 15 + Math.random() * 10; // 15–25s
-      const delay = Math.random() * 5; // stagger start
+      const duration = 15 + Math.random() * 10;
+      const delay = Math.random() * 5;
       img.style.animationDuration = `${duration}s`;
       img.style.animationDelay = `${delay}s`;
     });
@@ -78,66 +89,68 @@ export default {
 </script>
 
 <template>
-    <div 
-      style="position: relative; 
-      display: flex; 
-      justify-content: center; 
-      width: 100%;
-      max-width: 1480px; 
-      height: 710px;">
+  <div class="homegrid-container">
+    <!-- Stars -->
+    <div
+      v-for="(star, index) in stars"
+      :key="index"
+      class="star"
+      :style="{ top: star.y, left: star.x, width: star.size + 'px', height: star.size + 'px', animationDelay: star.delay + 's' }"
+    ></div>
 
-      <!-- Shimmering stars -->
+    <!-- Overlay images -->
+    <img
+      v-for="(img, index) in images"
+      :key="index"
+      :src="img.src"
+      class="overlay-img float"
+      :style="{ top: img.top + '%', left: img.left + '%' }"
+      alt="floating overlay"
+    />
+
+    <!-- Grid -->
+    <div class="grid-container">
       <div
-        v-for="(star, index) in stars"
-        :key="index"
-        class="star"
-        :style="{
-          top: star.y + 'px',
-          left: star.x + 'px',
-          width: star.size + 'px',
-          height: star.size + 'px',
-          animationDelay: star.delay + 's'
-        }"
-      ></div>
-
-      <!-- Overlay images -->
-      <img alt="cylinder" src="@/assets/images/cylinder.png" class="overlay-img float" style="top: 330px; left: 1120px;" />
-      <img alt="pyramid" src="@/assets/images/pyramid.png" class="overlay-img float" style="top: 380px; left: -130px;" />
-      <img alt="smoothcircle" src="@/assets/images/smoothcircle.png" class="overlay-img float" style="top: -12px; left: 30px;" />
-      <img alt="spikedcircle" src="@/assets/images/spikedcircle.png" class="overlay-img float" style="top: -60px; left: 990px;" />
-      <img alt="surfacedcircle" src="@/assets/images/surfacedcircle.png" class="overlay-img float" style="top: 280px; left: 530px;" />
-
-      <!-- The grid itself -->
-      <div 
-        style="display: grid; 
-        grid-template-columns: repeat(6, 1fr); 
-        grid-template-rows: repeat(7, 1fr);
-        width: 100%; 
-        height: 100%; 
-        background: transparent; 
-        position: relative; 
-        z-index: 1;">
-        <div
-          v-for="cell in cells"
-          :key="`${cell.row}-${cell.col}`"
-          style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.2);"
-          :style="cell.style"
-        >
-          <TitleText v-if="cell.merged" />
-        </div>
+        v-for="cell in cells"
+        :key="`${cell.row}-${cell.col}`"
+        style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.2);"
+        :style="cell.style"
+      >
+        <TitleText v-if="cell.merged" />
       </div>
     </div>
+  </div>
 </template>
 
 <style scoped>
+.homegrid-container {
+  position: relative;
+  width: 100%;
+  max-width: 1480px;
+  height: 710px;
+  margin: 0 auto;
+}
+
+/* Overlay images */
 .overlay-img {
   position: absolute;
-  width: 430px;
+  width: 18%;
   z-index: 0;
   pointer-events: none;
 }
 
-/* Floating random movement for images */
+/* Grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Floating animation */
 @keyframes floatRandom {
   0%   { transform: translate(0, 0) rotate(0deg); }
   25%  { transform: translate(40px, -50px) rotate(5deg); }

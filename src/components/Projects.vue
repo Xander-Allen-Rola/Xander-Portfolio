@@ -11,7 +11,7 @@ import emergentechoes from '@/assets/images/emergentechoes.png'
         style="display: flex;
         gap: 20px;
         align-items: center;">
-            <h2>Featured Projects</h2>
+            <h2>Projects</h2>
             <img src="../assets/icons/doublestar.svg" style="height: 35px;"/>
         </div>
         <div 
@@ -36,7 +36,7 @@ import emergentechoes from '@/assets/images/emergentechoes.png'
             :image="emergentechoes"
             githubLink="https://github.com/janrizmlibres/emergent-echoes.git"
             :tools="['Godot', 'C#']" />
-            <Project name="XU-NSP Information Management System"
+            <Project name="Information Management System"
             description="The XU-NSP Information Management System 
             (IMS) is an offline system for Xavier University’s 
             Night School Program that replaces spreadsheets and 

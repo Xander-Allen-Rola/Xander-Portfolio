@@ -38,7 +38,7 @@ onUnmounted(() => {
   <div
     style="width: 78%;
     max-width: 1480px;
-    min-width: 1050px;
+    min-width: 900px;
     position: absolute;
     left: 50%;
     top: 50px;
