@@ -15,35 +15,35 @@
           <h3 class="title">Hire Me</h3>
           <p class="subtitle">Please provide your details so I can understand your opportunity better.</p>
 
-          <form class="form" @submit.prevent>
+          <form class="form" @submit.prevent="sendEmail">
             <!-- Name -->
             <div class="form-group">
               <label for="name">Full Name *</label>
-              <input type="text" id="name" class="input" required />
+              <input type="text" id="name" name="name" class="input" required />
             </div>
 
             <!-- Company -->
             <div class="form-group">
               <label for="company">Company / Organization *</label>
-              <input type="text" id="company" class="input" required />
+              <input type="text" id="company" name="company" class="input" required />
             </div>
 
             <!-- Position -->
             <div class="form-group">
               <label for="position">Role / Position *</label>
-              <input type="text" id="position" class="input" required />
+              <input type="text" id="position" name="position" class="input" required />
             </div>
 
             <!-- Email -->
             <div class="form-group">
               <label for="email">Contact Email *</label>
-              <input type="email" id="email" class="input" required />
+              <input type="email" id="email" name="email" class="input" required />
             </div>
 
             <!-- Optional Message -->
             <div class="form-group">
               <label for="message">Message (Optional)</label>
-              <textarea id="message" rows="3" class="input"></textarea>
+              <textarea id="message" name="message" rows="3" class="input"></textarea>
             </div>
 
             <!-- Submit -->
@@ -59,8 +59,9 @@
 
 <script setup>
 import { ref } from 'vue'
-const emit = defineEmits(['close'])
+import emailjs from 'emailjs-com'
 
+const emit = defineEmits(['close'])
 const show = ref(true)
 
 function startClose() {
@@ -69,6 +70,50 @@ function startClose() {
 
 function emitClose() {
   emit('close')
+}
+
+// Replace these with your EmailJS credentials
+const SERVICE_ID = 'service_22s53fh'
+const TEMPLATE_ID = 'template_kf5zypl'
+const PUBLIC_KEY = '55lj-utl5r10SoUxs'
+
+function sendEmail(e) {
+  const form = e.target
+  let message = form.message.value.trim()
+
+  if (!message) {
+    message = `Hello Xander, I am ${form.name.value} from ${form.company.value} looking for a/an ${form.position.value}.`
+  }
+
+  emailjs.send(
+    SERVICE_ID,
+    TEMPLATE_ID,
+    {
+      name: form.name.value,
+      company: form.company.value,
+      position: form.position.value,
+      email: form.email.value,
+      message: message,
+    },
+    PUBLIC_KEY
+  )
+  .then(() => {
+    alert('✅ Your request was sent successfully!')
+    console.log({
+      name: form.name.value,
+      company: form.company.value,
+      position: form.position.value,
+      email: form.email.value,
+      message: message,
+    })
+
+    form.reset()
+    startClose()
+  })
+  .catch((error) => {
+    console.error('Email send error:', error)
+    alert('❌ Failed to send email. Please try again later.')
+  })
 }
 </script>
 
@@ -197,7 +242,6 @@ textarea.input { resize: none; }
     background-position 0.6s ease-in-out,
     filter 0.3s ease,
     transform 0.3s;
-  
 }
 .submit-btn button:hover { 
   background-position: right center, right center;
