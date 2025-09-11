@@ -167,5 +167,12 @@ onBeforeUnmount(() => {
   .contact-content {
     max-width: 100%;
   }
+
+  .title-icon {
+    height: 30px;
+  }
+  .contact-title{
+    gap: 15px;
+  }
 }
 </style>
