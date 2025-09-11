@@ -28,7 +28,7 @@ p{
 }
 
 body{
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
 }
 
 @media (hover: hover) {
