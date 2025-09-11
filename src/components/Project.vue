@@ -7,7 +7,11 @@ defineProps({
   name: String,
   description: String,
   image: String,
-  githubLink: String // pass a GitHub link prop
+  githubLink: String,         // GitHub link prop
+  tools: {                     // Array of tools
+    type: Array,
+    default: () => []
+  }
 })
 
 const flipped = ref(false)
@@ -16,6 +20,7 @@ function toggleFlip() {
   flipped.value = !flipped.value
 }
 </script>
+
 
 <template>
   <div class="project-card" @click="toggleFlip">
@@ -43,6 +48,9 @@ function toggleFlip() {
             >
               <FontAwesomeIcon :icon="faGithubAlt" />
             </a>
+          </div>
+          <div class="tools">
+            <div class="tool" v-for="tool in tools" :key="tool">{{ tool }}</div>
           </div>
           <p style="text-align: justify;">{{ description }}</p>
         </div>
@@ -121,6 +129,21 @@ function toggleFlip() {
   flex-direction: column;
   gap: 20px;
   color: #fff;
+}
+
+.tools{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tool{
+  background: #292929;
+  border-radius: 999px;
+  padding: 5px 20px;
+  border: grey 1px solid;
+  white-space: nowrap;
 }
 
 .project-text h1 {

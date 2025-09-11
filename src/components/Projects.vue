@@ -20,49 +20,34 @@ import emergentechoes from '@/assets/images/emergentechoes.png'
         gap: 60px;
         margin-top: 50px;">
             <Project name="Emergent Echoes"
-            description="This research project developed and 
-            evaluated a resource-based AI decision algorithm 
-            for generating dynamic NPC behaviors in a 2D 
-            simulation. We conducted A/B testing to compare 
-            these procedurally generated NPCs with human-scripted 
-            ones, finding no statistically significant difference 
-            in player immersion or engagement between the two. 
-            As a key contributor, I served as the UI/UX Designer 
-            and Developer, responsible for creating a 
-            standardized user interface with features like status 
-            bars, an NPC prompt system, and floating text to 
-            ensure a fair and unbiased evaluation. I also 
-            contributed to the writing of the final paper, helping 
-            to document our findings and conclude that this 
-            procedural approach can match the quality of 
-            human-designed content, while offering greater 
-            efficiency in game development."
+            description="This project developed and evaluated a 
+            resource-based AI algorithm for dynamic NPC behaviors 
+            in a 2D simulation. A/B testing showed no significant 
+            difference in player immersion between AI-generated 
+            and human-scripted NPCs. As UI/UX Designer and 
+            Developer, I created a standardized interface with 
+            status bars, an NPC prompt system, and floating text 
+            for fair evaluation, and contributed to the final 
+            paper, demonstrating that procedural NPC generation 
+            can match human-designed content while improving 
+            development efficiency."
             :image="emergentechoes"
-            githubLink="https://github.com/janrizmlibres/emergent-echoes.git" />
+            githubLink="https://github.com/janrizmlibres/emergent-echoes.git"
+            :tools="['Godot', 'C#']" />
             <Project name="XU-NSP Information Management System"
             description="The XU-NSP Information Management System 
-            (IMS) is a comprehensive, offline-based information 
-            management system for Xavier University's Night 
-            School Program. It was developed to replace 
-            traditional spreadsheet methods and streamline 
-            administrative tasks for staff and administrators, 
-            providing intuitive data dashboards for metrics 
-            analysis and robust management tools for student, 
-            volunteer, staff, and class-related data. As a key 
-            contributor to this project, I specialized in the 
-            Data Dashboard and Volunteer Information Management. 
-            My work on the data dashboard provided administrators 
-            with at-a-glance insights into enrollment trends and 
-            demographics, significantly enhancing decision-making 
-            capabilities. For the volunteer management feature, 
-            I designed and implemented the functionality to add, 
-            view, update, and export volunteer data, which 
-            streamlined administrative processes. My role was 
-            essential in providing the program with powerful 
-            analytical tools and efficient data management for 
-            its volunteer staff."
+            (IMS) is an offline system for Xavier University’s 
+            Night School Program that replaces spreadsheets and 
+            streamlines administrative tasks. I contributed to 
+            the Data Dashboard and Volunteer Management modules, 
+            providing at-a-glance enrollment insights and 
+            implementing features to add, view, update, and export 
+            volunteer data. My work enhanced decision-making and 
+            improved efficiency in managing student, staff, 
+            volunteer, and class information."
             :image="xunspims"
-            githubLink="https://github.com/janrizmlibres/nsp-ims-app.git" />
+            githubLink="https://github.com/janrizmlibres/nsp-ims-app.git"
+            :tools="['JavaScript', 'Vue', 'Tailwind CSS', 'express.js', 'MariaDB']" />
         </div>
     </div>
 </template>
