@@ -42,7 +42,7 @@ onUnmounted(() => {
     <!-- HEADER -->
     <header class="app-header">
   <!-- Mobile-only top row: Logo + Profile -->
-  <div class="logo-container">
+  <div class="logo-container swipe-anim" :class="{ 'swipe-hide': isSticky }">
     <XanderLogo />
     <ProfileButton />
   </div>
@@ -58,6 +58,7 @@ onUnmounted(() => {
     <ProfileButton />
   </div>
 </header>
+
 
 
     <!-- MAIN CONTENT -->
@@ -141,6 +142,8 @@ onUnmounted(() => {
     flex-direction: column; /* stack vertically */
     gap: 10px;
     align-items: stretch;
+    top: -47px;
+    align-items: center
   }
 
   /* Show mobile top row: Logo left, Profile right */
