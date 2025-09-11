@@ -190,7 +190,7 @@ onBeforeUnmount(() => {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100dvh; /* 👈 accounts for mobile browser UI changes */
+  height: 100vh; /* 👈 accounts for mobile browser UI changes */
   pointer-events: none;
   overflow: hidden;
   z-index: -1;
