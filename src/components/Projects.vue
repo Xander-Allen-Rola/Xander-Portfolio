@@ -18,7 +18,9 @@ import emergentechoes from '@/assets/images/emergentechoes.png'
         style="display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 60px;
-        margin-top: 50px;">
+        margin-top: 50px;
+        border: blue 1px solid;
+        justify-items: center;">
             <Project name="Emergent Echoes"
             description="This project developed and evaluated a 
             resource-based AI algorithm for dynamic NPC behaviors 

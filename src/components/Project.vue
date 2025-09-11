@@ -61,13 +61,16 @@ function toggleFlip() {
 
 <style scoped>
 .project-card {
-  width: 550px;
+  width: 100%;
+  max-width: 550px;
   height: 620px;
+  min-width: 450px;
   perspective: 1000px;
   border-radius: 12px;
   cursor: pointer;
   position: relative;
   animation: float 6s ease-in-out infinite;
+  box-sizing: border-box;
 }
 
 .card-inner {

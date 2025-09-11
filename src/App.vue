@@ -36,11 +36,13 @@ onUnmounted(() => {
 <template>
   <StarsOverlay />
   <div
-    style="max-width: 1480px;
+    style="width: 78%;
+    max-width: 1480px;
     position: absolute;
     left: 50%;
     top: 50px;
-    transform: translateX(-50%);">
+    transform: translateX(-50%);
+    border: red 1px solid;">
     <!-- Sentinel element to detect when header becomes sticky -->
     <div ref="sentinel" style="height: 1px;"></div>
     <header
@@ -64,9 +66,9 @@ onUnmounted(() => {
       <SubInfo /> <!-- Not a scrollable section -->
     </main>
 
-    <AboutMe id="about" style="margin: 70px 0 0 90px;" />
-    <Projects id="projects" style="margin: 100px 0 0 90px;" />
-    <Contact id="contact" style="margin: 100px 0 0 90px;" />
+    <AboutMe id="about" style="margin: 70px 0 0 0px;" />
+    <Projects id="projects" style="margin: 100px 0 0 0px;" />
+    <Contact id="contact" style="margin: 100px 0 0 0px;" />
     <footer
       style="display: flex;
       align-items: center;
