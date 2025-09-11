@@ -22,6 +22,9 @@ const fov = 300
 const MAX_DEPTH = 1200
 const BASE_FORWARD_SPEED = 0.5
 
+// exclusion zone radius (circular around center)
+const exclusionRadius = 350
+
 // Generate stars + initial planet
 function generateStars() {
   stars.value = Array.from({ length: STAR_COUNT }, () => ({
@@ -38,10 +41,17 @@ function generateStars() {
 // Spawn a new planet with opacity reset
 function spawnPlanet() {
   planetIndex = (planetIndex + 1) % planetImages.length
+
+  let x, y
+  do {
+    x = Math.random() * width - width / 2
+    y = Math.random() * height - height / 2
+  } while (Math.sqrt(x * x + y * y) < exclusionRadius)
+
   currentPlanet.value = {
     img: planetImages[planetIndex],
-    x: Math.random() * width - width / 2,
-    y: Math.random() * height - height / 2,
+    x,
+    y,
     z: 1000,
     size: 500 + Math.random() * 300,
     driftX: (Math.random() - 0.5) * 0.2,
@@ -49,6 +59,7 @@ function spawnPlanet() {
     rotation: 0,
     rotationSpeed: (Math.random() - 0.5) * 0.1
   }
+
   planetOpacity.value = 0 // reset opacity for fade-in
 }
 
@@ -195,6 +206,5 @@ onBeforeUnmount(() => {
 .planet {
   position: absolute;
   object-fit: contain;
-  /* no CSS transition needed; controlled by JS fade */
 }
 </style>
