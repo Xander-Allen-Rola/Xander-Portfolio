@@ -31,6 +31,11 @@ body{
   overflow-x: hidden;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100vw;
+}
+
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
