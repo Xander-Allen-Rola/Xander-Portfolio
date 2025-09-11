@@ -78,8 +78,12 @@ export default {
 </script>
 
 <template>
-  <div style="display: flex; justify-content: center; width: 100vw;">
-    <div style="position: relative; width: 1480px; height: 710px;">
+    <div 
+      style="position: relative; 
+      display: flex; 
+      justify-content: center; 
+      width: 1480px; 
+      height: 710px;">
 
       <!-- Shimmering stars -->
       <div
@@ -104,8 +108,14 @@ export default {
 
       <!-- The grid itself -->
       <div 
-        style="display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(7, 1fr);
-        width: 100%; height: 100%; background: transparent; position: relative; z-index: 1;">
+        style="display: grid; 
+        grid-template-columns: repeat(6, 1fr); 
+        grid-template-rows: repeat(7, 1fr);
+        width: 100%; 
+        height: 100%; 
+        background: transparent; 
+        position: relative; 
+        z-index: 1;">
         <div
           v-for="cell in cells"
           :key="`${cell.row}-${cell.col}`"
@@ -116,7 +126,6 @@ export default {
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <style scoped>
