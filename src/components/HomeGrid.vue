@@ -6,13 +6,6 @@ import smoothcircle from '@/assets/images/smoothcircle.png';
 import spikedcircle from '@/assets/images/spikedcircle.png';
 import surfacedcircle from '@/assets/images/surfacedcircle.png';
 
-const mergedArea = {
-  startRow: 2,
-  endRow: 4,
-  startCol: 2,
-  endCol: 5,
-};
-
 const STAR_COUNT = 20;
 
 export default {
@@ -33,31 +26,42 @@ export default {
         { src: spikedcircle, top: 0, left: 73 },
         { src: surfacedcircle, top: 46, left: 41 },
       ],
+      mergedArea: {
+        startRow: 2,
+        endRow: 4,
+        startCol: 2,
+        endCol: 5,
+      },
+      isMobile: window.innerWidth <= 767,
     };
   },
   computed: {
     cells() {
+      const merged = { ...this.mergedArea };
+
+      // Extend merged area for mobile view
+      if (this.isMobile) {
+        merged.endRow = 5; // include row 5 in mobile
+      }
+
       const cells = [];
       for (let row = 1; row <= 7; row++) {
         for (let col = 1; col <= 6; col++) {
-          if (
-            row === mergedArea.startRow &&
-            col === mergedArea.startCol
-          ) {
+          if (row === merged.startRow && col === merged.startCol) {
             cells.push({
               row,
               col,
               merged: true,
               style: {
-                gridRow: `${mergedArea.startRow} / ${mergedArea.endRow + 1}`,
-                gridColumn: `${mergedArea.startCol} / ${mergedArea.endCol + 1}`,
+                gridRow: `${merged.startRow} / ${merged.endRow + 1}`,
+                gridColumn: `${merged.startCol} / ${merged.endCol + 1}`,
               },
             });
           } else if (
-            row >= mergedArea.startRow &&
-            row <= mergedArea.endRow &&
-            col >= mergedArea.startCol &&
-            col <= mergedArea.endCol
+            row >= merged.startRow &&
+            row <= merged.endRow &&
+            col >= merged.startCol &&
+            col <= merged.endCol
           ) {
             continue;
           } else {
@@ -77,12 +81,18 @@ export default {
     },
   },
   mounted() {
+    // Floating images animation setup
     const imgs = document.querySelectorAll(".overlay-img");
     imgs.forEach(img => {
       const duration = 15 + Math.random() * 10;
       const delay = Math.random() * 5;
       img.style.animationDuration = `${duration}s`;
       img.style.animationDelay = `${delay}s`;
+    });
+
+    // Resize listener to detect mobile
+    window.addEventListener('resize', () => {
+      this.isMobile = window.innerWidth <= 767;
     });
   }
 };

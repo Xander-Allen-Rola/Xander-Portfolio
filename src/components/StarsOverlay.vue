@@ -12,6 +12,7 @@ const planetImages = [planet1, planet2, planet3, planet4]
 const STAR_COUNT = 200
 const stars = ref([])
 const currentPlanet = ref(null)
+const planetOpacity = ref(0) // fade-in opacity
 
 let planetIndex = 0
 let lastScrollY = window.scrollY
@@ -34,7 +35,7 @@ function generateStars() {
   spawnPlanet()
 }
 
-// Spawn a new planet
+// Spawn a new planet with opacity reset
 function spawnPlanet() {
   planetIndex = (planetIndex + 1) % planetImages.length
   currentPlanet.value = {
@@ -48,6 +49,7 @@ function spawnPlanet() {
     rotation: 0,
     rotationSpeed: (Math.random() - 0.5) * 0.1
   }
+  planetOpacity.value = 0 // reset opacity for fade-in
 }
 
 // Animate stars and planet
@@ -81,7 +83,12 @@ function animateStars() {
     currentPlanet.value.y += currentPlanet.value.driftY
     currentPlanet.value.rotation += currentPlanet.value.rotationSpeed
 
-    // fade + respawn
+    // fade-in effect
+    if (planetOpacity.value < 1) {
+      planetOpacity.value += 0.002 // very slow fade-in
+    }
+
+    // respawn
     if (currentPlanet.value.z < 50 || currentPlanet.value.z > MAX_DEPTH + 200) {
       spawnPlanet()
     }
@@ -99,7 +106,6 @@ function onScroll() {
   const forwardFactor = 0.12
   const backwardFactor = 0.04
 
-  // stars
   stars.value.forEach(star => {
     if (scrollDelta > 0) {
       star.zSpeed += scrollDelta * forwardFactor * Math.random()
@@ -108,12 +114,11 @@ function onScroll() {
     }
   })
 
-  // planet
   if (currentPlanet.value) {
     if (scrollDelta > 0) {
       currentPlanet.value.z -= scrollDelta * 0.3
     } else {
-      currentPlanet.value.z += Math.abs(scrollDelta) * 0.2 // backward
+      currentPlanet.value.z += Math.abs(scrollDelta) * 0.2
     }
   }
 }
@@ -137,10 +142,8 @@ onBeforeUnmount(() => {
 })
 </script>
 
-
 <template>
   <div class="stars-overlay">
-    <!-- stars -->
     <div
       v-for="(star, i) in stars"
       :key="i"
@@ -154,7 +157,6 @@ onBeforeUnmount(() => {
       }"
     ></div>
 
-    <!-- planet -->
     <img
       v-if="currentPlanet"
       class="planet"
@@ -164,11 +166,10 @@ onBeforeUnmount(() => {
         top: `${height / 2 + (currentPlanet.y * fov / currentPlanet.z)}px`,
         width: `${currentPlanet.size * fov / currentPlanet.z}px`,
         height: `${currentPlanet.size * fov / currentPlanet.z}px`,
-        opacity: `${Math.pow(1 - currentPlanet.z / MAX_DEPTH, 0.4)}`,
+        opacity: planetOpacity,
         transform: `rotate(${currentPlanet.rotation}deg)`
       }"
     />
-
   </div>
 </template>
 
@@ -194,6 +195,6 @@ onBeforeUnmount(() => {
 .planet {
   position: absolute;
   object-fit: contain;
-  transition: opacity 0.2s linear;
+  /* no CSS transition needed; controlled by JS fade */
 }
 </style>
