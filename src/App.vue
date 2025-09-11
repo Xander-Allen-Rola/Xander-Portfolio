@@ -99,7 +99,7 @@ onUnmounted(() => {
   width: 100%;
   position: sticky;
   top: 15px;
-  z-index: 10;
+  z-index: 2;
 }
 
 .swipe-anim {

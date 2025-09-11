@@ -145,4 +145,18 @@ function openResume() {
 .resume-btn:active {
   transform: translateY(2px);
 }
+
+/* MOBILE LAYOUT */
+@media (max-width: 767px) {
+  .profile-card {
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    min-width: 400px;
+    width:100%;
+    padding: 10px;
+    position: fixed;
+  }
+}
 </style>

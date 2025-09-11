@@ -73,8 +73,8 @@ onBeforeUnmount(() => {
 .profile-popup-enter-active,
 .profile-popup-leave-active {
   transition:
-    opacity 0.35s cubic-bezier(.4,2,.6,1),
-    transform 0.35s cubic-bezier(.4,2,.6,1);
+    opacity 0.35s,
+    transform 0.35s;
   transform-origin: top right;
 }
 .profile-popup-enter-from,
@@ -90,5 +90,29 @@ onBeforeUnmount(() => {
 
 .profile-btn:active {
   transform: translateY(2px);
+}
+
+@media (max-width: 767px) { 
+  .profile-popup-enter-active,
+.profile-popup-leave-active {
+  transition: transform 0.35s;
+}
+
+.profile-popup-enter-from {
+  transform: translateX(100%); /* Start off-screen to the right */
+}
+
+.profile-popup-enter-to {
+  transform: translateX(-50%); /* Slide into place */
+}
+
+.profile-popup-leave-from {
+  transform: translateX(0); /* Start from visible position */
+}
+
+.profile-popup-leave-to {
+  transform: translateX(100%); /* Slide out to the right */
+}
+
 }
 </style>
