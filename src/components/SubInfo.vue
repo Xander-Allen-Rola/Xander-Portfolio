@@ -18,7 +18,7 @@
         <img src="@/assets/icons/star.png" class="star-icon" />
         <h3>UI/UX</h3>
         <!-- last star with extra spacing -->
-        <img src="@/assets/icons/star.png" class="star-icon" style="margin-right: 9rem;" />
+        <img src="@/assets/icons/star.png" class="star-icon" />
       </div>
 
       <!-- duplicate row -->
@@ -37,7 +37,7 @@
         <img src="@/assets/icons/star.png" class="star-icon" />
         <h3>UI/UX</h3>
         <!-- last star with extra spacing -->
-        <img src="@/assets/icons/star.png" class="star-icon" style="margin-right: 9rem;" />
+        <img src="@/assets/icons/star.png" class="star-icon" />
       </div>
     </div>
   </div>
@@ -63,6 +63,7 @@
   font-size: 25px;
   white-space: nowrap;
   align-items: center;
+  margin-right: 9rem;
 }
 
 .star-icon {
@@ -78,6 +79,21 @@
   }
   100% {
     transform: translateX(-50%); /* move exactly half since we duplicated */
+  }
+}
+
+/* MOBILE LAYOUT */
+@media (max-width: 767px) {
+  .scrolling-row {
+    gap: 3rem;           /* consistent spacing between items */
+    margin-right: 3rem;
+  }
+  h3{
+    font-size: 20px;
+  }
+  .star-icon {
+    width: 20px;
+    height: 30px;
   }
 }
 </style>
