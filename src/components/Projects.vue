@@ -8,13 +8,11 @@ import emergentechoes from '@/assets/images/emergentechoes.png'
 <template>
     <div class="projects-container">
         <div 
-        style="display: flex;
-        gap: 20px;
-        align-items: center;">
+        class ="projects-title">
             <h2>Projects</h2>
-            <img src="../assets/icons/doublestar.svg" style="height: 35px;"/>
+            <img class="title-icon" src="../assets/icons/doublestar.svg"/>
         </div>
-        <div 
+        <div class="projects-grid"
         style="display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 60px;
@@ -44,3 +42,29 @@ import emergentechoes from '@/assets/images/emergentechoes.png'
         </div>
     </div>
 </template>
+
+<style scoped>
+.title-icon {
+  height: 35px;
+}
+
+.projects-title{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+@media (max-width: 1044px) {
+    .projects-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+@media (max-width: 767px) {
+    .title-icon {
+        height: 30px;
+    }
+    .projects-title {
+        gap: 15px;
+    }
+}
+</style>
