@@ -37,52 +37,59 @@ const planets = ref([
   { title: "Project Experience", content: "Built software solutions such as an Information Management System for Xavier University’s Night School Program and a Resource-Based AI Decision Algorithm for procedural NPC behavior, combining technical innovation with practical applications." }
 ])
 
-const radius = 350
+// make radius reactive
+const radius = ref(350)
+
+function updateRadius() {
+  radius.value = window.innerWidth <= 726 ? 250 : 350 //when the window width goes below 726px, set radius to 250
+  console.log("Current orbit radius:", radius.value)
+}
+
 const anglePerPlanet = 360 / planets.value.length
-const rotation = ref(0)  // current rotation in degrees
+const rotation = ref(0)
 let orbiting = true
 let animationFrame = null
-let currentIndex = ref(0) // track which planet is centered
+let currentIndex = ref(0)
 
 function planetStyle(index) {
   const angle = ((rotation.value + index * anglePerPlanet) % 360) * Math.PI / 180
   const z = Math.cos(angle)
   const scale = 0.7 + 0.6 * z
   const zIndex = Math.round(z * 100)
-  const x = Math.sin(angle) * radius
+  const x = Math.sin(angle) * radius.value
 
   return {
-    transform: `translateX(${x}px) translateZ(${z * radius}px) scale(${scale})`,
+    transform: `translateX(${x}px) translateZ(${z * radius.value}px) scale(${scale})`,
     zIndex,
     opacity: 0.5 + 0.5 * z
   }
 }
 
-// Center a specific planet
 function switchPlanet(direction) {
   orbiting = false
   currentIndex.value = (currentIndex.value + direction + planets.value.length) % planets.value.length
   rotation.value = -currentIndex.value * anglePerPlanet
 }
 
-// Auto-rotation only if orbiting is true
 function animateOrbit() {
   if (orbiting) rotation.value += 0.05
   animationFrame = requestAnimationFrame(animateOrbit)
 }
 
-// Resume orbiting on scroll
 function handleScroll() {
   orbiting = true
 }
 
 onMounted(() => {
+  updateRadius() // set initial radius
+  window.addEventListener('resize', updateRadius)
   animateOrbit()
   window.addEventListener('scroll', handleScroll)
 })
 
 onBeforeUnmount(() => {
   cancelAnimationFrame(animationFrame)
+  window.removeEventListener('resize', updateRadius)
   window.removeEventListener('scroll', handleScroll)
 })
 </script>
