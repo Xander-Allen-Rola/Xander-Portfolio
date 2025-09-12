@@ -211,7 +211,7 @@ function toggleFlip() {
 
 @media (max-width: 767px) {
   .project-card {
-    height: 720px;
+    height: 750px;
   }
 }
 </style>
