@@ -120,7 +120,6 @@ onBeforeUnmount(() => {
   justify-content: center;
   width: 100%;
   position: relative;
-  border: red solid 1px;
 }
 
 .orbit-wrapper {
@@ -132,7 +131,6 @@ onBeforeUnmount(() => {
   justify-items: center;
   /* Tilt orbit forward slightly */
   transform: rotateX(-20deg); /* 20deg forward tilt */
-  border: blue solid 1px;
 }
 
 .planet {

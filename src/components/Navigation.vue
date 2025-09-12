@@ -114,4 +114,11 @@ onUnmounted(() => {
   transition: left 0.3s, width 0.3s;
   z-index: 0;
 }
+
+@media (max-width: 767px) {
+  .navigation {
+    gap: 0px;
+    padding: 6px 0px;
+  }
+}
 </style>
