@@ -3,4 +3,12 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+// 👇 import MotionPlugin
+import { MotionPlugin } from '@vueuse/motion'
+
+const app = createApp(App)
+
+// 👇 register it globally
+app.use(MotionPlugin)
+
+app.mount('#app')

@@ -40,7 +40,7 @@ onUnmounted(() => {
     <div ref="sentinel" style="height: 1px;"></div>
 
     <!-- HEADER -->
-    <header class="app-header">
+<header class="app-header" v-motion-slide-visible-top>
   <!-- Mobile-only top row: Logo + Profile -->
   <div class="logo-container swipe-anim" :class="{ 'swipe-hide': isSticky }">
     <XanderLogo />
@@ -63,17 +63,40 @@ onUnmounted(() => {
 
     <!-- MAIN CONTENT -->
     <main class="main-content">
-      <HomeGrid id="home" />
+      <HomeGrid id="home"
+      v-motion
+    :initial="{ opacity: 0, y: 50, scale: 0.95 }"
+    :visible="{ opacity: 1, y: 0, scale: 1 }"
+    :duration="600" />
       <SubInfo />
     </main>
 
-    <AboutMe id="about" style="margin-top: 90px;"/>
-    <Projects id="projects" style="margin-top: 90px;"/>
-    <Contact id="contact" style="margin-top: 90px;"/>
+    <AboutMe 
+    v-motion
+    :initial="{ opacity: 0, y: 50, scale: 0.95 }"
+    :visible="{ opacity: 1, y: 0, scale: 1 }"
+    :duration="600"
+    id="about" style="margin-top: 90px;"/>
+    <Projects 
+    v-motion
+    :initial="{ opacity: 0, y: 50, scale: 0.95 }"
+    :visible="{ opacity: 1, y: 0, scale: 1 }"
+    :duration="600"
+    id="projects" style="margin-top: 90px;"/>
+    <Contact 
+    v-motion
+    :initial="{ opacity: 0, y: 50, scale: 0.95 }"
+    :visible="{ opacity: 1, y: 0, scale: 1 }"
+    :duration="600"
+    id="contact" style="margin-top: 90px;"/>
 
     <!-- FOOTER -->
     <footer class="app-footer">
-      <SocialsButtons />
+      <SocialsButtons
+      v-motion
+      :initial="{ opacity: 0, y: 50, scale: 0.95 }"
+      :visible="{ opacity: 1, y: 0, scale: 1 }"
+      :duration="600" />
     </footer>
   </div>
 </template>

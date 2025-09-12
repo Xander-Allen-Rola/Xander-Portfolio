@@ -1,4 +1,8 @@
 <template>
+  <div v-motion
+    :initial="{ opacity: 0, y: 50, scale: 0.95 }"
+    :visible="{ opacity: 1, y: 0, scale: 1 }"
+    :duration="600">
   <hr style="border: 1px solid rgba(255, 255, 255, 0.2); width: 100vw;" />
   <div class="scrolling-container">
     <div class="scrolling-track">
@@ -42,6 +46,7 @@
     </div>
   </div>
   <hr style="border: 1px solid rgba(255, 255, 255, 0.2); width: 100vw;" />
+  </div>
 </template>
 
 <style scoped>
