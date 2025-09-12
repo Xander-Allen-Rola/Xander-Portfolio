@@ -196,9 +196,9 @@ onBeforeUnmount(() => {
     margin: 0; /* space for buttons */
     overflow-x: hidden;
     width: 128%;
-    border: blue solid 1px;
   }
   .planet {
+    top: 50px;
     width: 70%;
   }
 
