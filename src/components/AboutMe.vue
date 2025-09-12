@@ -10,25 +10,25 @@
     <div class="orbit-wrapper-container">
       <button class="orbit-btn left" @click="switchPlanet(-1)">&#10094;</button>
 
-      <div class="orbit-wrapper">
-        <div
-          v-for="(planet, index) in planets"
-          :key="index"
-          class="planet"
-          :style="planetStyle(index)"
-        >
-          <h3>{{ planet.title }}</h3>
-          <p>{{ planet.content }}</p>
-        </div>
-      </div>
+      <div 
+  class="orbit-wrapper"
+  ref="orbitWrapper"
+>
+  <div
+    v-for="(planet, index) in planets"
+    :key="index"
+    class="planet"
+    :style="planetStyle(index)"
+  >
+    <h3>{{ planet.title }}</h3>
+    <p>{{ planet.content }}</p>
+  </div>
+</div>
 
       <button class="orbit-btn right" @click="switchPlanet(1)">&#10095;</button>
     </div>
   </div>
 </template>
-
-
-
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
@@ -40,12 +40,10 @@ const planets = ref([
   { title: "Project Experience", content: "Built software solutions such as an Information Management System for Xavier University’s Night School Program and a Resource-Based AI Decision Algorithm for procedural NPC behavior, combining technical innovation with practical applications." }
 ])
 
-// make radius reactive
+// Orbit state
 const radius = ref(350)
-
 function updateRadius() {
-  radius.value = window.innerWidth <= 726 ? 250 : 350 //when the window width goes below 726px, set radius to 250
-  console.log("Current orbit radius:", radius.value)
+  radius.value = window.innerWidth <= 726 ? 250 : 350
 }
 
 const anglePerPlanet = 360 / planets.value.length
@@ -83,17 +81,60 @@ function handleScroll() {
   orbiting = true
 }
 
+// --- Swipe & Drag support ---
+const orbitWrapper = ref(null)
+let startX = 0
+let lastX = 0
+let dragging = false
+
+function handleTouchStart(e) {
+  dragging = true
+  orbiting = false
+  startX = e.touches[0].clientX
+  lastX = startX
+}
+
+function handleTouchMove(e) {
+  if (!dragging) return
+  const currentX = e.touches[0].clientX
+  const deltaX = currentX - lastX
+  rotation.value += deltaX * 0.3 // sensitivity factor
+  lastX = currentX
+}
+
+function handleTouchEnd() {
+  if (!dragging) return
+  dragging = false
+
+  // Snap to nearest planet
+  const nearestIndex = Math.round(-rotation.value / anglePerPlanet)
+  currentIndex.value = (nearestIndex % planets.value.length + planets.value.length) % planets.value.length
+  rotation.value = -currentIndex.value * anglePerPlanet
+}
+
 onMounted(() => {
-  updateRadius() // set initial radius
+  updateRadius()
   window.addEventListener('resize', updateRadius)
   animateOrbit()
   window.addEventListener('scroll', handleScroll)
+
+  if (orbitWrapper.value) {
+    orbitWrapper.value.addEventListener("touchstart", handleTouchStart)
+    orbitWrapper.value.addEventListener("touchmove", handleTouchMove)
+    orbitWrapper.value.addEventListener("touchend", handleTouchEnd)
+  }
 })
 
 onBeforeUnmount(() => {
   cancelAnimationFrame(animationFrame)
   window.removeEventListener('resize', updateRadius)
   window.removeEventListener('scroll', handleScroll)
+
+  if (orbitWrapper.value) {
+    orbitWrapper.value.removeEventListener("touchstart", handleTouchStart)
+    orbitWrapper.value.removeEventListener("touchmove", handleTouchMove)
+    orbitWrapper.value.removeEventListener("touchend", handleTouchEnd)
+  }
 })
 </script>
 
@@ -188,6 +229,10 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 767px) {
+  .orbit-btn {
+    display: none;
+  }
+
   .orbit-wrapper-container {
     height: 400px;
   }
