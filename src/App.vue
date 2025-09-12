@@ -92,11 +92,7 @@ onUnmounted(() => {
 
     <!-- FOOTER -->
     <footer class="app-footer">
-      <SocialsButtons
-      v-motion
-      :initial="{ opacity: 0, y: 50, scale: 0.95 }"
-      :visible="{ opacity: 1, y: 0, scale: 1 }"
-      :duration="600" />
+      <SocialsButtons />
     </footer>
   </div>
 </template>
