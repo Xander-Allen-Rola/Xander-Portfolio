@@ -100,7 +100,7 @@ onBeforeUnmount(() => {
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
-  perspective: 1200px;
+  perspective: 1500px;
 }
 
 .about-title {
@@ -130,11 +130,13 @@ onBeforeUnmount(() => {
   margin: 0 50px; /* space for buttons */
   transform-style: preserve-3d;
   justify-items: center;
+  /* Tilt orbit forward slightly */
+  transform: rotateX(-20deg); /* 20deg forward tilt */
+  border: blue solid 1px;
 }
 
 .planet {
   position: absolute;
-  top: 20%;
   width: 400px;
   padding: 20px;
   border-radius: 20px;
@@ -193,7 +195,7 @@ onBeforeUnmount(() => {
     margin: 0; /* space for buttons */
     overflow-x: hidden;
     width: 128%;
-    border: red solid 1px;
+    border: blue solid 1px;
   }
   .planet {
     width: 70%;
