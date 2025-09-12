@@ -120,6 +120,7 @@ onBeforeUnmount(() => {
   justify-content: center;
   width: 100%;
   position: relative;
+  border: red solid 1px;
 }
 
 .orbit-wrapper {
@@ -184,9 +185,20 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 767px) {
-  .planet {
-    width: 80%;
+  .orbit-wrapper-container {
+    height: 400px;
   }
+  .orbit-wrapper {
+    position: absolute;
+    margin: 0; /* space for buttons */
+    overflow-x: hidden;
+    width: 128%;
+    border: red solid 1px;
+  }
+  .planet {
+    width: 70%;
+  }
+
   h3{
     font-size: 21px;
   }

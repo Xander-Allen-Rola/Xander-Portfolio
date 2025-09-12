@@ -52,7 +52,7 @@ onUnmounted(() => {
     <XanderLogo />
   </div>
 
-  <NavigationButtons />
+  
 
   <div class="swipe-anim right" :class="{ 'swipe-hide': isSticky }">
     <ProfileButton />
