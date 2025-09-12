@@ -208,4 +208,10 @@ function toggleFlip() {
   50% { transform: translateY(-15px) rotate(1deg); }
   100% { transform: translateY(0px) rotate(0deg); }
 }
+
+@media (max-width: 767px) {
+  .project-card {
+    height: 720px;
+  }
+}
 </style>
