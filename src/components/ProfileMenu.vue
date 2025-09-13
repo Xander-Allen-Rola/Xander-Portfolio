@@ -46,11 +46,17 @@ function openResume() {
 .profile-card {
   display: flex;
   align-items: center;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
+
+  /* solid bg + gradient border */
   background:
     linear-gradient(#1C1C1C, #1C1C1C) padding-box,
-    linear-gradient(90deg, #FFD49C, #7A87FB) border-box;
+    linear-gradient(90deg, #FFD49C, #7A87FB, #FFD49C, #7A87FB) border-box;
+
   background-clip: padding-box, border-box;
+  background-size: 300% 300%;   /* oversized gradient so it can move */
+  background-position: 0% 50%;  /* start position */
+
   width: 650px;
   position: absolute;
   top: 56px;
@@ -59,6 +65,16 @@ function openResume() {
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+
+  /* Animate gradient movement */
+  animation: move-border 6s linear infinite;
+}
+
+/* Animate gradient "sliding" around the border */
+@keyframes move-border {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .profile-left {
@@ -69,17 +85,34 @@ function openResume() {
 }
 
 .profile-photo-border {
-  background: linear-gradient(90deg, #7A87FB, #FFD49C);
-  padding: 3px;
+  border: 3px solid transparent;
+
+  /* Two layers: solid inner + gradient border */
+  background:
+    linear-gradient(#1C1C1C, #1C1C1C) padding-box,
+    linear-gradient(90deg, #7A87FB, #FFD49C, #7A87FB) border-box;
+
+  background-clip: padding-box, border-box;
   border-radius: 50%;
   display: inline-block;
+
+  /* Animate the gradient movement */
+  background-size: 300% 300%;
+  background-position: 0% 50%;
+  animation: move-photo-border 4s linear infinite;
+}
+
+@keyframes move-photo-border {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .profile-photo {
   height: 120px;
   width: 120px;
   border-radius: 50%;
-  background: #fff; /* fallback for image area */
+  background: #fff;
   display: block;
   object-fit: cover;
 }
