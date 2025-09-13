@@ -6,25 +6,17 @@ import smoothcircle from '@/assets/images/smoothcircle.png';
 import spikedcircle from '@/assets/images/spikedcircle.png';
 import surfacedcircle from '@/assets/images/surfacedcircle.png';
 
-const STAR_COUNT = 20;
-
 export default {
   name: "HomeGrid",
   components: { TitleText },
   data() {
     return {
-      stars: Array.from({ length: STAR_COUNT }, () => ({
-        x: Math.random() * 100 + '%',
-        y: Math.random() * 100 + '%',
-        size: 2 + Math.random() * 3,
-        delay: Math.random() * 5,
-      })),
       images: [
-        { src: cylinder, top: 55, left: 82 },
-        { src: pyramid, top: 61, left: -2 },
-        { src: smoothcircle, top: 11, left: 8 },
-        { src: spikedcircle, top: 0, left: 73 },
-        { src: surfacedcircle, top: 46, left: 41 },
+        { src: cylinder, bottom: 7, left: 82 },       // switched to bottom
+        { src: pyramid, bottom: 1, left: -2 },        // switched to bottom
+        { src: smoothcircle, top: 11, left: 8 },      // stays top
+        { src: spikedcircle, top: 0, left: 73 },      // stays top
+        { src: surfacedcircle, bottom: 17, left: 41 } // switched to bottom
       ],
       mergedArea: {
         startRow: 2,
@@ -39,7 +31,6 @@ export default {
     cells() {
       const merged = { ...this.mergedArea };
 
-      // Extend merged area for mobile view
       if (this.isMobile) {
         merged.endRow = 5; // include row 5 in mobile
       }
@@ -100,21 +91,16 @@ export default {
 
 <template>
   <div class="homegrid-container">
-    <!-- Stars -->
-    <div
-      v-for="(star, index) in stars"
-      :key="index"
-      class="star"
-      :style="{ top: star.y, left: star.x, width: star.size + 'px', height: star.size + 'px', animationDelay: star.delay + 's' }"
-    ></div>
-
     <!-- Overlay images -->
     <img
       v-for="(img, index) in images"
       :key="index"
       :src="img.src"
       class="overlay-img float"
-      :style="{ top: img.top + '%', left: img.left + '%' }"
+      :style="{
+        left: img.left + '%',
+        ...(img.top !== undefined ? { top: img.top + '%' } : { bottom: img.bottom + '%' })
+      }"
       alt="floating overlay"
     />
 
@@ -175,19 +161,9 @@ export default {
   animation-iteration-count: infinite;
 }
 
-/* Stars */
-.star {
-  position: absolute;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.8;
-  z-index: 0;
-  animation: shimmer 2s infinite alternate;
-}
-
-@keyframes shimmer {
-  0% { opacity: 0.2; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.2); }
-  100% { opacity: 0.2; transform: scale(0.8); }
+@media (max-width: 767px) {
+  .homegrid-container {
+    height: 520px;
+  }
 }
 </style>

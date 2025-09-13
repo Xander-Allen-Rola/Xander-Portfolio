@@ -164,7 +164,8 @@ onBeforeUnmount(() => {
         top: `${height / 2 + (star.y * fov / star.z)}px`,
         width: `${star.size * fov / star.z}px`,
         height: `${star.size * fov / star.z}px`,
-        opacity: `${1 - star.z / MAX_DEPTH}`
+        opacity: `${1 - star.z / MAX_DEPTH}`,
+        animationDelay: `${i * 0.05}s`
       }"
     ></div>
 
@@ -201,6 +202,13 @@ onBeforeUnmount(() => {
   position: absolute;
   background: white;
   border-radius: 50%;
+  animation: shimmer 2s infinite alternate;
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0.2; transform: scale(0.8); }
 }
 
 .planet {
