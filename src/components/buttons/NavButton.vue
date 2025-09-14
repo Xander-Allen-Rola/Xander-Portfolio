@@ -28,8 +28,7 @@ const props = defineProps({
   color: #fff;
   border-radius: 999px;
   font-family: 'Poppins', sans-serif;
-  z-index: 1; /* above the indicator */
-
+  z-index: 1;
   transition:
     filter 0.3s ease,
     transform 0.3s;

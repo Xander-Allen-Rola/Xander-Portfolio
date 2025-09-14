@@ -12,12 +12,7 @@ import emergentechoes from '@/assets/images/emergentechoes.png'
             <h2>Projects</h2>
             <img class="title-icon" src="../assets/icons/doublestar.svg"/>
         </div>
-        <div class="projects-grid"
-        style="display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 60px;
-        margin-top: 50px;
-        justify-items: center;">
+        <div class="projects-grid">
             <Project name="Emergent Echoes"
             description="This project developed and evaluated a 
             resource-based AI algorithm for dynamic NPC behaviors 
@@ -34,7 +29,14 @@ import emergentechoes from '@/assets/images/emergentechoes.png'
             githubLink="https://github.com/janrizmlibres/emergent-echoes.git"
             :tools="['Godot', 'C#']" />
             <Project name="Information Management System"
-            description="The XU-NSP Information Management System (IMS) is an offline system for Xavier University’s Night School Program that replaces spreadsheets and streamlines administrative tasks. I worked on the Data Dashboard and Volunteer Management modules, enabling quick enrollment insights and CRUD on volunteer data, improving efficiency in managing students, staff, volunteers, and classes."
+            description="The XU-NSP Information Management System 
+            (IMS) is an offline system for Xavier University’s 
+            Night School Program that replaces spreadsheets and 
+            streamlines administrative tasks. I worked on the Data 
+            Dashboard and Volunteer Management modules, enabling 
+            quick enrollment insights and CRUD on volunteer data, 
+            improving efficiency in managing students, staff, 
+            volunteers, and classes."
             :image="xunspims"
             githubLink="https://github.com/janrizmlibres/nsp-ims-app.git"
             :tools="['JavaScript', 'Vue', 'Tailwind CSS', 'express.js', 'MariaDB']" />
@@ -51,6 +53,14 @@ import emergentechoes from '@/assets/images/emergentechoes.png'
     display: flex;
     gap: 20px;
     align-items: center;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+    margin-top: 50px;
+    justify-items: center;
 }
 
 @media (max-width: 1044px) {

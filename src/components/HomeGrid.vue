@@ -12,11 +12,11 @@ export default {
   data() {
     return {
       images: [
-        { src: cylinder, bottom: 7, left: 82 },       // switched to bottom
-        { src: pyramid, bottom: 1, left: -2 },        // switched to bottom
-        { src: smoothcircle, top: 11, left: 8 },      // stays top
-        { src: spikedcircle, top: 0, left: 73 },      // stays top
-        { src: surfacedcircle, bottom: 17, left: 41 } // switched to bottom
+        { src: cylinder, bottom: 7, left: 82 },
+        { src: pyramid, bottom: 1, left: -2 },
+        { src: smoothcircle, top: 11, left: 8 },
+        { src: spikedcircle, top: 0, left: 73 },
+        { src: surfacedcircle, bottom: 17, left: 41 }
       ],
       mergedArea: {
         startRow: 2,
@@ -32,7 +32,7 @@ export default {
       const merged = { ...this.mergedArea };
 
       if (this.isMobile) {
-        merged.endRow = 5; // include row 5 in mobile
+        merged.endRow = 5;
       }
 
       const cells = [];
@@ -72,7 +72,6 @@ export default {
     },
   },
   mounted() {
-    // Floating images animation setup
     const imgs = document.querySelectorAll(".overlay-img");
     imgs.forEach(img => {
       const duration = 15 + Math.random() * 10;
@@ -81,7 +80,6 @@ export default {
       img.style.animationDelay = `${delay}s`;
     });
 
-    // Resize listener to detect mobile
     window.addEventListener('resize', () => {
       this.isMobile = window.innerWidth <= 767;
     });
@@ -91,7 +89,6 @@ export default {
 
 <template>
   <div class="homegrid-container">
-    <!-- Overlay images -->
     <img
       v-for="(img, index) in images"
       :key="index"
@@ -104,7 +101,6 @@ export default {
       alt="floating overlay"
     />
 
-    <!-- Grid -->
     <div class="grid-container">
       <div
         v-for="cell in cells"
@@ -127,7 +123,6 @@ export default {
   margin: 0 auto;
 }
 
-/* Overlay images */
 .overlay-img {
   position: absolute;
   width: 18%;
@@ -135,7 +130,6 @@ export default {
   pointer-events: none;
 }
 
-/* Grid */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -146,19 +140,18 @@ export default {
   z-index: 1;
 }
 
-/* Floating animation */
+.float {
+  animation-name: floatRandom;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
 @keyframes floatRandom {
   0%   { transform: translate(0, 0) rotate(0deg); }
   25%  { transform: translate(40px, -50px) rotate(5deg); }
   50%  { transform: translate(-30px, 30px) rotate(-3deg); }
   75%  { transform: translate(50px, 40px) rotate(4deg); }
   100% { transform: translate(0, 0) rotate(0deg); }
-}
-
-.float {
-  animation-name: floatRandom;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
 }
 
 @media (max-width: 767px) {

@@ -1,13 +1,11 @@
 <script setup>
 function openResume() {
-  // Opens resume.pdf in a new tab
   window.open('https://drive.google.com/file/d/1-DFpphPW5lBp0xDHNhBt113Xz2H2kKvO/view?usp=sharing', '_blank', 'noopener,noreferrer')
 }
 </script>
 
 <template>
   <div class="profile-card">
-    <!-- Profile Image -->
     <div class="profile-left">
       <div class="profile-photo-border">
         <img 
@@ -16,8 +14,6 @@ function openResume() {
         class="profile-photo"/>
       </div>
     </div>
-
-    <!-- Text Section -->
     <div class="profile-right">
       <h3 class="name">Xander Allen M. Rola</h3>
       <h4 class="subtitle">
@@ -33,8 +29,6 @@ function openResume() {
         new tools, explore creative solutions, and collaborate on 
         projects that make a real impact.
       </p>
-
-      <!-- Resume Button -->
       <div class="resume-btn">
         <button @click="openResume">View Resume</button>
       </div>
@@ -47,16 +41,12 @@ function openResume() {
   display: flex;
   align-items: center;
   border: 3px solid transparent;
-
-  /* solid bg + gradient border */
   background:
     linear-gradient(#1C1C1C, #1C1C1C) padding-box,
     linear-gradient(90deg, #FFD49C, #7A87FB, #FFD49C, #7A87FB) border-box;
-
   background-clip: padding-box, border-box;
-  background-size: 300% 300%;   /* oversized gradient so it can move */
-  background-position: 0% 50%;  /* start position */
-
+  background-size: 300% 300%;
+  background-position: 0% 50%;
   width: 650px;
   position: absolute;
   top: 56px;
@@ -65,17 +55,10 @@ function openResume() {
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-
-  /* Animate gradient movement */
   animation: move-border 6s linear infinite;
 }
 
-/* Animate gradient "sliding" around the border */
-@keyframes move-border {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+  
 
 .profile-left {
   flex: 0 0 150px;
@@ -86,26 +69,15 @@ function openResume() {
 
 .profile-photo-border {
   border: 3px solid transparent;
-
-  /* Two layers: solid inner + gradient border */
   background:
     linear-gradient(#1C1C1C, #1C1C1C) padding-box,
     linear-gradient(90deg, #7A87FB, #FFD49C, #7A87FB) border-box;
-
   background-clip: padding-box, border-box;
   border-radius: 50%;
   display: inline-block;
-
-  /* Animate the gradient movement */
   background-size: 300% 300%;
   background-position: 0% 50%;
   animation: move-photo-border 4s linear infinite;
-}
-
-@keyframes move-photo-border {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 .profile-photo {
@@ -153,8 +125,6 @@ function openResume() {
   border: 2px solid transparent;
   border-radius: 24px / 50%;
   cursor: pointer;
-
-  /* Two layers: inner + border */
   background:
     linear-gradient(90deg, #7A87FB, #FFD49C, #7A87FB) padding-box,
     linear-gradient(90deg, #FFD49C, #7A87FB, #FFD49C) border-box;
@@ -179,7 +149,19 @@ function openResume() {
   transform: translateY(2px);
 }
 
-/* MOBILE LAYOUT */
+@keyframes move-photo-border {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes move-border {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+  
 @media (max-width: 767px) {
   .profile-card {
     top: 150px;

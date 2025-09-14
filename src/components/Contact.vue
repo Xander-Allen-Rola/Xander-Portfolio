@@ -22,7 +22,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="contact-container">
-    <!-- Desktop / Tablet view -->
+    
     <template v-if="!isMobile">
       <div class="contact-content">
         <div class="contact-title">
@@ -56,7 +56,6 @@ onBeforeUnmount(() => {
           class="message-btn"
           label="Send me a message"
           @click="showMessageMenu = true"
-          width="230px"
         />
         <MessageMenu v-if="showMessageMenu" @close="showMessageMenu = false" />
       </div>
@@ -64,7 +63,7 @@ onBeforeUnmount(() => {
       <img src="../assets/images/contactmeformal.svg" class="contact-image"/>
     </template>
 
-    <!-- Mobile view -->
+    
     <template v-else>
       <div class="contact-content">
         <div class="contact-title">
@@ -138,8 +137,8 @@ onBeforeUnmount(() => {
   width: 50%;
 }
 
-.mssage-btn {
-  width: 100%;
+.message-btn {
+  width: 230px;
 }
 
 @media (max-width: 767px) {

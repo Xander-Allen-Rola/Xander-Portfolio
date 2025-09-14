@@ -29,7 +29,6 @@ const emit = defineEmits(['click'])
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
 .nav-btn {
   height: 48px;
   font-size: 16px;
@@ -40,16 +39,12 @@ const emit = defineEmits(['click'])
   border: 2px solid transparent;
   border-radius: 24px / 50%;
   cursor: pointer;
-
-  /* Two layers: inner + border */
   background:
     linear-gradient(90deg, #7A87FB, #FFD49C, #7A87FB) padding-box,
     linear-gradient(90deg, #FFD49C, #7A87FB, #FFD49C) border-box;
-
-  background-size: 200% 100%, 200% 100%; /* both layers movable */
-  background-position: left center, left center; /* start position */
+  background-size: 200% 100%, 200% 100%;
+  background-position: left center, left center;
   background-clip: padding-box, border-box;
-
   transition:
     background-position 0.6s ease-in-out,
     filter 0.3s ease,

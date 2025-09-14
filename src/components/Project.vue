@@ -7,8 +7,8 @@ defineProps({
   name: String,
   description: String,
   image: String,
-  githubLink: String,         // GitHub link prop
-  tools: {                     // Array of tools
+  githubLink: String,
+  tools: {
     type: Array,
     default: () => []
   }
@@ -25,7 +25,7 @@ function toggleFlip() {
 <template>
   <div class="project-card" @click="toggleFlip">
     <div class="card-inner" :class="{ flipped: flipped }">
-      <!-- Front -->
+      
       <div class="card-front">
         <img :src="image" class="project-image" />
         <div class="project-text">
@@ -33,12 +33,12 @@ function toggleFlip() {
         </div>
       </div>
 
-      <!-- Back -->
+      
       <div class="card-back">
         <div class="project-text">
           <div class="title-text">
             <h1 style="max-width: 400px;">{{ name }}</h1>
-            <!-- GitHub Button -->
+            
             <a 
               :href="githubLink" 
               target="_blank" 
@@ -165,7 +165,7 @@ function toggleFlip() {
   text-align: center;
 }
 
-/* GitHub button styles */
+
 .github-btn {
   display: flex;
   align-items: center;

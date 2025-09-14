@@ -1,30 +1,23 @@
 <template>
   <div class="about-container">
-    <!-- Static Title -->
     <div class="about-title">
       <h2>About Me</h2>
       <img src="../assets/icons/doublestar.svg" class="title-icon"/>
     </div>
-
-    <!-- Orbiting Planets with navigation buttons -->
     <div class="orbit-wrapper-container">
       <button class="orbit-btn left" @click="switchPlanet(-1)">&#10094;</button>
-
       <div 
-  class="orbit-wrapper"
-  ref="orbitWrapper"
->
-  <div
-    v-for="(planet, index) in planets"
-    :key="index"
-    class="planet"
-    :style="planetStyle(index)"
-  >
-    <h3>{{ planet.title }}</h3>
-    <p>{{ planet.content }}</p>
-  </div>
-</div>
-
+        class="orbit-wrapper"
+        ref="orbitWrapper">
+          <div
+            v-for="(planet, index) in planets"
+            :key="index"
+            class="planet"
+            :style="planetStyle(index)">
+              <h3>{{ planet.title }}</h3>
+              <p>{{ planet.content }}</p>
+          </div>
+      </div>
       <button class="orbit-btn right" @click="switchPlanet(1)">&#10095;</button>
     </div>
   </div>
@@ -40,7 +33,7 @@ const planets = ref([
   { title: "Project Experience", content: "Built software solutions such as an Information Management System for Xavier University’s Night School Program and a Resource-Based AI Decision Algorithm for procedural NPC behavior, combining technical innovation with practical applications." }
 ])
 
-// Orbit state
+ 
 const radius = ref(350)
 function updateRadius() {
   radius.value = window.innerWidth <= 726 ? 250 : 350
@@ -81,7 +74,7 @@ function handleScroll() {
   orbiting = true
 }
 
-// --- Swipe & Drag support ---
+ 
 const orbitWrapper = ref(null)
 let startX = 0
 let lastX = 0
@@ -98,15 +91,13 @@ function handleTouchMove(e) {
   if (!dragging) return
   const currentX = e.touches[0].clientX
   const deltaX = currentX - lastX
-  rotation.value += deltaX * 0.3 // sensitivity factor
+  rotation.value += deltaX * 0.3
   lastX = currentX
 }
 
 function handleTouchEnd() {
   if (!dragging) return
   dragging = false
-
-  // Snap to nearest planet
   const nearestIndex = Math.round(-rotation.value / anglePerPlanet)
   currentIndex.value = (nearestIndex % planets.value.length + planets.value.length) % planets.value.length
   rotation.value = -currentIndex.value * anglePerPlanet
@@ -170,11 +161,10 @@ onBeforeUnmount(() => {
   width: 100%;
   height: 400px;
   position: relative;
-  margin: 0 50px; /* space for buttons */
+  margin: 0 50px;
   transform-style: preserve-3d;
   justify-items: center;
-  /* Tilt orbit forward slightly */
-  transform: rotateX(-20deg); /* 20deg forward tilt */
+  transform: rotateX(-20deg);
 }
 
 .planet {
@@ -238,7 +228,7 @@ onBeforeUnmount(() => {
   }
   .orbit-wrapper {
     position: absolute;
-    margin: 0; /* space for buttons */
+    margin: 0;
     overflow-x: hidden;
     width: 128%;
   }

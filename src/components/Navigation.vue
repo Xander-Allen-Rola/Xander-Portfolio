@@ -29,7 +29,6 @@ const updateIndicator = () => {
   }
 }
 
-// Scroll to a section when clicking a button
 const scrollToSection = (target) => {
   if (target === 'home') {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -41,7 +40,6 @@ const scrollToSection = (target) => {
   }
 }
 
-// Update activeIndex based on scroll position
 const updateActiveOnScroll = () => {
   let closestIndex = 0
   let minDistance = Infinity

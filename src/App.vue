@@ -1,6 +1,6 @@
+
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-
 import XanderLogo from './components/XanderLogo.vue'
 import NavigationButtons from './components/Navigation.vue'
 import HomeGrid from './components/HomeGrid.vue'
@@ -10,11 +10,8 @@ import Projects from './components/Projects.vue'
 import Contact from './components/Contact.vue'
 import SocialsButtons from './components/SocialsButtons.vue'
 import ProfileButton from './components/buttons/ProfileButton.vue'
-import HireMeMenu from './components/HireMeMenu.vue'
-import CommonUseButton from './components/buttons/CommonUseButton.vue'
 import StarsOverlay from './components/StarsOverlay.vue'
 
-const showHireMeMenu = ref(false)
 const isSticky = ref(false)
 const sentinel = ref(null)
 let observer
@@ -23,7 +20,6 @@ onMounted(() => {
   observer = new IntersectionObserver(([entry]) => {
     isSticky.value = !entry.isIntersecting
   }, { threshold: 0 })
-
   if (sentinel.value) observer.observe(sentinel.value)
 })
 
@@ -32,154 +28,129 @@ onUnmounted(() => {
 })
 </script>
 
+
 <template>
   <StarsOverlay />
-
   <div class="app-container">
-    <!-- Sentinel for sticky header -->
     <div ref="sentinel" style="height: 1px;"></div>
-
-    <!-- HEADER -->
-<header class="app-header" v-motion-slide-visible-top>
-  <!-- Mobile-only top row: Logo + Profile -->
-  <div class="logo-container swipe-anim" :class="{ 'swipe-hide': isSticky }">
-    <XanderLogo />
-    <ProfileButton />
-  </div>
-
-  <!-- Desktop elements -->
-  <div class="swipe-anim left" :class="{ 'swipe-hide': isSticky }">
-    <XanderLogo />
-  </div>
-
-  <NavigationButtons />
-
-  <div class="swipe-anim right" :class="{ 'swipe-hide': isSticky }">
-    <ProfileButton />
-  </div>
-</header>
-
-
-
-    <!-- MAIN CONTENT -->
+    <header class="app-header" v-motion-slide-visible-top>
+      <div class="logo-container swipe-anim" :class="{ 'swipe-hide': isSticky }">
+        <XanderLogo />
+        <ProfileButton />
+      </div>
+      <div class="swipe-anim left" :class="{ 'swipe-hide': isSticky }">
+        <XanderLogo />
+      </div>
+      <NavigationButtons />
+      <div class="swipe-anim right" :class="{ 'swipe-hide': isSticky }">
+        <ProfileButton />
+      </div>
+    </header>
     <main class="main-content">
-      <HomeGrid id="home"
-      v-motion
-    :initial="{ opacity: 0, y: 50, scale: 0.95 }"
-    :visible="{ opacity: 1, y: 0, scale: 1 }"
-    :duration="600" />
+      <HomeGrid
+        id="home"
+        v-motion
+        :initial="{ opacity: 0, y: 50, scale: 0.95 }"
+        :visible="{ opacity: 1, y: 0, scale: 1 }"
+        :duration="600"
+      />
       <SubInfo />
     </main>
-
-    <AboutMe 
-    v-motion
-    :initial="{ opacity: 0, y: 50, scale: 0.95 }"
-    :visible="{ opacity: 1, y: 0, scale: 1 }"
-    :duration="600"
-    id="about" style="margin-top: 90px;"/>
-    <Projects 
-    v-motion
-    :initial="{ opacity: 0, y: 50, scale: 0.95 }"
-    :visible="{ opacity: 1, y: 0, scale: 1 }"
-    :duration="600"
-    id="projects" style="margin-top: 90px;"/>
-    <Contact 
-    v-motion
-    :initial="{ opacity: 0, y: 50, scale: 0.95 }"
-    :visible="{ opacity: 1, y: 0, scale: 1 }"
-    :duration="600"
-    id="contact" style="margin-top: 90px;"/>
-
-    <!-- FOOTER -->
+    <AboutMe
+      v-motion
+      :initial="{ opacity: 0, y: 50, scale: 0.95 }"
+      :visible="{ opacity: 1, y: 0, scale: 1 }"
+      :duration="600"
+      id="about"
+      style="margin-top: 90px;"
+    />
+    <Projects
+      v-motion
+      :initial="{ opacity: 0, y: 50, scale: 0.95 }"
+      :visible="{ opacity: 1, y: 0, scale: 1 }"
+      :duration="600"
+      id="projects"
+      style="margin-top: 90px;"
+    />
+    <Contact
+      v-motion
+      :initial="{ opacity: 0, y: 50, scale: 0.95 }"
+      :visible="{ opacity: 1, y: 0, scale: 1 }"
+      :duration="600"
+      id="contact"
+      style="margin-top: 90px;"
+    />
     <footer class="app-footer">
       <SocialsButtons />
     </footer>
   </div>
 </template>
 
+
 <style scoped>
-.app-container {
-  width: 78%;
-  max-width: 1480px;
-  position: absolute;
-  left: 50%;
-  top: 50px;
-  transform: translateX(-50%);
-}
-
-/* HEADER */
-.app-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  position: sticky;
-  top: 15px;
-  z-index: 2;
-}
-
-.swipe-anim {
-  transition: transform 0.5s cubic-bezier(.55,0,.1,1), opacity 0.3s cubic-bezier(.55,0,.1,1);
-  will-change: transform, opacity;
-}
-
-.swipe-hide {
-  transform: translateY(-80px);
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Hide mobile wrapper on desktop */
-.logo-container {
-  display: none;
-}
-
-/* MAIN CONTENT */
-.main-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
-}
-
-/* FOOTER */
-.app-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-top: 100px;
-}
-
-/* MOBILE LAYOUT */
-@media (max-width: 767px) {
+  .app-container {
+    width: 78%;
+    max-width: 1480px;
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    transform: translateX(-50%);
+  }
   .app-header {
     display: flex;
-    flex-direction: column; /* stack vertically */
-    gap: 10px;
-    align-items: stretch;
-    top: -47px;
-    align-items: center
-  }
-
-  /* Show mobile top row: Logo left, Profile right */
-  .logo-container {
-    display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
+    position: sticky;
+    top: 15px;
+    z-index: 2;
   }
-
-  /* Hide desktop Logo/Profile */
-  .app-header > .left,
-  .app-header > .right {
+  .swipe-anim {
+    transition: transform 0.5s cubic-bezier(.55,0,.1,1), opacity 0.3s cubic-bezier(.55,0,.1,1);
+    will-change: transform, opacity;
+  }
+  .swipe-hide {
+    transform: translateY(-80px);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .logo-container {
     display: none;
   }
-
-  /* Navigation below top row, centered */
-  .app-header > NavigationButtons {
+  .main-content {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
   }
-}
-
+  .app-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 100px;
+  }
+  @media (max-width: 767px) {
+    .app-header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: stretch;
+      top: -47px;
+      align-items: center;
+    }
+    .logo-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .app-header > .left,
+    .app-header > .right {
+      display: none;
+    }
+    .app-header > NavigationButtons {
+      display: flex;
+      justify-content: center;
+    }
+  }
 </style>

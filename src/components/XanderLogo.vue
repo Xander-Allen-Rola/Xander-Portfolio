@@ -4,9 +4,9 @@
     align-items: center;">
         <img 
         src="@/assets/icons/X_icon.png"
-        style="width: 56px;   /* Increase as needed */
-        height: 52px;  /* Increase as needed */" />
+        style="width: 56px;
+        height: 52px;" />
         <span 
-        style="font-size: 24px; /* Increase as needed */ ">ander</span>
+        style="font-size: 24px;">ander</span>
     </div>
 </template>

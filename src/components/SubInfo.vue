@@ -3,10 +3,9 @@
     :initial="{ opacity: 0, y: 50, scale: 0.95 }"
     :visible="{ opacity: 1, y: 0, scale: 1 }"
     :duration="600">
-  <hr style="border: 1px solid rgba(255, 255, 255, 0.2); width: 100vw;" />
+  <hr/>
   <div class="scrolling-container">
     <div class="scrolling-track">
-      <!-- One full row -->
       <div class="scrolling-row">
         <h3>JavaScript</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
@@ -21,11 +20,9 @@
         <h3>Node.js</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
         <h3>UI/UX</h3>
-        <!-- last star with extra spacing -->
         <img src="@/assets/icons/star.png" class="star-icon" />
       </div>
 
-      <!-- duplicate row -->
       <div class="scrolling-row">
         <h3>JavaScript</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
@@ -40,16 +37,19 @@
         <h3>Node.js</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
         <h3>UI/UX</h3>
-        <!-- last star with extra spacing -->
         <img src="@/assets/icons/star.png" class="star-icon" />
       </div>
     </div>
   </div>
-  <hr style="border: 1px solid rgba(255, 255, 255, 0.2); width: 100vw;" />
+  <hr/>
   </div>
 </template>
 
 <style scoped>
+hr{
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+  width: 100vw;
+}
 .scrolling-container {
   width: 100vw;
   overflow: hidden;
@@ -64,7 +64,7 @@
 
 .scrolling-row {
   display: flex;
-  gap: 9rem;           /* consistent spacing between items */
+  gap: 9rem;
   font-size: 25px;
   white-space: nowrap;
   align-items: center;
@@ -77,20 +77,19 @@
   object-fit: contain;
 }
 
-/* Marquee effect */
 @keyframes scroll-left {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%); /* move exactly half since we duplicated */
+    transform: translateX(-50%);
   }
 }
 
 /* MOBILE LAYOUT */
 @media (max-width: 767px) {
   .scrolling-row {
-    gap: 3rem;           /* consistent spacing between items */
+    gap: 3rem;
     margin-right: 3rem;
   }
   h3{
