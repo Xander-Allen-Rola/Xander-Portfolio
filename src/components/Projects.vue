@@ -3,7 +3,7 @@ import Project from './Project.vue'
 import ProjectImgPlaceholder from '@/assets/images/projectplaceholder.png'
 import xunspims from '@/assets/images/xunspims.png' 
 import emergentechoes from '@/assets/images/emergentechoes.png'
-import SwipeShelf from '@/assets/images/swipeshelf.png'
+import SwipeShelf from '@/assets/images/SwipeShelf.png'
 </script>
 
 <template>
