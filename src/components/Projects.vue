@@ -25,8 +25,8 @@ import SwipeShelf from '@/assets/images/SwipeShelf.png'
             planned features for friend-based recommendations and 
             social reviews."
             :image="SwipeShelf"
-            githubLink=""
-            :tools="['']" />
+            githubLink="https://github.com/Xander-Allen-Rola/swipeshelf.git"
+            :tools="['TypeScript', 'React', 'Tailwind CSS']" />
             <Project name="Emergent Echoes"
             description="This project developed and evaluated a 
             resource-based AI algorithm for dynamic NPC behaviors 
