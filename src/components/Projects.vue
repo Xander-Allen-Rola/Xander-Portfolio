@@ -26,7 +26,7 @@ import SwipeShelf from '@/assets/images/SwipeShelf.png'
             social reviews."
             :image="SwipeShelf"
             githubLink="https://github.com/Xander-Allen-Rola/swipeshelf.git"
-            :tools="['TypeScript', 'React', 'Tailwind CSS']" />
+            :tools="['TypeScript', 'React', 'Tailwind CSS', 'PostgreSQL']" />
             <Project name="Emergent Echoes"
             description="This project developed and evaluated a 
             resource-based AI algorithm for dynamic NPC behaviors 
