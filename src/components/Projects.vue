@@ -14,16 +14,14 @@ import SwipeShelf from '@/assets/images/SwipeShelf.png'
             <img class="title-icon" src="../assets/icons/doublestar.svg"/>
         </div>
         <div class="projects-grid">
-            <Project name="SwipeShelf (Coming Soon)"
-            description="A modern book discovery and 
-            recommendation platform that makes exploring new reads 
-            simple and engaging. Users can swipe through book 
-            suggestions, save favorites to their personal shelf, 
-            and skip titles they’re not interested in. The app 
-            comes preloaded with book data and reviews from the 
-            web, ensuring a rich experience from day one, with 
-            planned features for friend-based recommendations and 
-            social reviews."
+            <Project name="SwipeShelf"
+            description="SwipeShelf is a personalized book discovery app 
+            that makes finding your next read effortless. Get tailored 
+            book recommendations and swipe right to save titles to your 
+            personal shelf—or swipe left to pass. Your shelf keeps track 
+            of the books you want to read and the ones you’ve finished. 
+            The more you add, the smarter the algorithm gets—so your 
+            recommendations keep getting better."
             :image="SwipeShelf"
             githubLink="https://github.com/Xander-Allen-Rola/swipeshelf.git"
             :tools="['TypeScript', 'React', 'Tailwind CSS', 'PostgreSQL']" />
