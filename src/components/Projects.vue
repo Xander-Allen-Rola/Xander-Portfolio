@@ -15,15 +15,21 @@ import SwipeShelf from '@/assets/images/SwipeShelf.png'
         </div>
         <div class="projects-grid">
             <Project name="SwipeShelf"
+            headsup="SwipeShelf is best experienced via the APK. If you’re 
+            uncomfortable installing an APK from an external source, 
+            the web link is fully usable too, though it features a mobile-native 
+            UI and isn’t optimized for desktop."
             description="SwipeShelf is a personalized book discovery app 
             that makes finding your next read effortless. Get tailored 
             book recommendations and swipe right to save titles to your 
             personal shelf—or swipe left to pass. Your shelf keeps track 
             of the books you want to read and the ones you’ve finished. 
             The more you add, the smarter the algorithm gets—so your 
-            recommendations keep getting better."
+            recommendations keep getting better.`"
             :image="SwipeShelf"
             githubLink="https://github.com/Xander-Allen-Rola/swipeshelf.git"
+            apkLink="https://drive.google.com/file/d/1H_1uUO3TgDew6VjI5RacTKxotA-17-DX/view?usp=sharing"
+            webLink="https://swipeshelf.vercel.app/"
             :tools="['TypeScript', 'React', 'Tailwind CSS', 'PostgreSQL']" />
             <Project name="Emergent Echoes"
             description="This project developed and evaluated a 

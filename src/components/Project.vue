@@ -2,12 +2,26 @@
 import { ref } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faGithubAlt } from '@fortawesome/free-brands-svg-icons'
+import { faAndroid } from '@fortawesome/free-brands-svg-icons'
+import { faLink } from '@fortawesome/free-solid-svg-icons'
 
 defineProps({
   name: String,
   description: String,
   image: String,
   githubLink: String,
+  apkLink: {
+    type: String,
+    default: '' // optional
+  },
+  webLink: {
+    type: String,
+    default: '' // optional
+  },
+  headsup: {
+    type: String,
+    default: '' // optional
+  },
   tools: {
     type: Array,
     default: () => []
@@ -43,15 +57,36 @@ function toggleFlip() {
               :href="githubLink" 
               target="_blank" 
               rel="noopener noreferrer" 
-              class="github-btn"
+              class="link-btn"
               @click.stop
             >
               <FontAwesomeIcon :icon="faGithubAlt" />
+            </a>
+            <a 
+              v-if="apkLink"
+              :href="apkLink" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="link-btn"
+              @click.stop
+            >
+              <FontAwesomeIcon :icon="faAndroid" />
+            </a>
+            <a 
+              v-if="webLink"
+              :href="webLink" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="link-btn"
+              @click.stop
+            >
+              <FontAwesomeIcon :icon="faLink" />
             </a>
           </div>
           <div class="tools">
             <div class="tool" v-for="tool in tools" :key="tool">{{ tool }}</div>
           </div>
+          <p v-if="headsup" style="text-align: center; font-size: 12px; color: #ccc;"> <span style="font-weight: bold;"> Heads-up: </span> {{ headsup }}</p>
           <p style="text-align: justify;">{{ description }}</p>
         </div>
       </div>
@@ -166,7 +201,7 @@ function toggleFlip() {
 }
 
 
-.github-btn {
+.link-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -185,7 +220,7 @@ function toggleFlip() {
   overflow: hidden;
 }
 
-.github-btn .fa-icon, .github-btn svg {
+.link-btn .fa-icon, .link-btn svg {
   width: 1em;
   height: 1em;
   min-width: 28px;
@@ -196,7 +231,7 @@ function toggleFlip() {
   display: block;
 }
 
-.github-btn:hover {
+.link-btn:hover {
   background: rgba(0, 255, 255, 0.15);
   color: #00ffff;
   transform: scale(1.1);
