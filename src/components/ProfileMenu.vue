@@ -1,6 +1,6 @@
 <script setup>
 function openResume() {
-  window.open('https://drive.google.com/file/d/1-DFpphPW5lBp0xDHNhBt113Xz2H2kKvO/view?usp=sharing', '_blank', 'noopener,noreferrer')
+  window.open('https://drive.google.com/file/d/1cYEIdnfNzjWMhaKk4En4f14Wbugt_UFM/view?usp=sharing', '_blank', 'noopener,noreferrer')
 }
 </script>
 
