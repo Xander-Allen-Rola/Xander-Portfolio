@@ -28,7 +28,7 @@ import SwipeShelf from '@/assets/images/SwipeShelf.png'
             recommendations keep getting better.`"
             :image="SwipeShelf"
             githubLink="https://github.com/Xander-Allen-Rola/swipeshelf.git"
-            apkLink="https://drive.google.com/file/d/1H_1uUO3TgDew6VjI5RacTKxotA-17-DX/view?usp=sharing"
+            apkLink="https://github.com/Xander-Allen-Rola/swipeshelf/releases/download/v0.3.0/SwipeShelf.v0-3-0.apk"
             webLink="https://swipeshelf.vercel.app/"
             :tools="['TypeScript', 'React', 'Tailwind CSS', 'PostgreSQL']" />
             <Project name="Emergent Echoes"
