@@ -3,8 +3,6 @@ import NavButton from './buttons/NavButton.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faFacebookF } from '@fortawesome/free-brands-svg-icons'
-import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 
 function goTo(url) {
   window.open(url, "_blank", "noopener,noreferrer")
@@ -18,12 +16,6 @@ function goTo(url) {
     </NavButton>
     <NavButton class="nav-btn" @click="goTo('https://github.com/Xander-Allen-Rola')">
       <FontAwesomeIcon :icon="faGithub" />
-    </NavButton>
-    <NavButton class="nav-btn" @click="goTo('https://www.facebook.com/xander.a.r02')">
-      <FontAwesomeIcon :icon="faFacebookF" />
-    </NavButton>
-    <NavButton class="nav-btn" @click="goTo('https://www.instagram.com/xanderola.a/')">
-      <FontAwesomeIcon :icon="faInstagram" />
     </NavButton>
   </nav>
 </template>
