@@ -24,7 +24,7 @@ function openResume() {
         Hi, I’m Xander! I love building clean, responsive, and 
         user-friendly websites that bring ideas to life. With a 
         background in Computer Science and a growing passion for 
-        front-end development, I enjoy turning designs into 
+        full-stack development, I enjoy turning designs into 
         smooth digital experiences. I’m always excited to learn 
         new tools, explore creative solutions, and collaborate on 
         projects that make a real impact.
