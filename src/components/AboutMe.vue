@@ -29,8 +29,8 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 const planets = ref([
   { title: "Technical Skills & Passion", content: "Skilled in .NET, SQL, Java, Python, and full-stack web technologies, with a strong focus on creating scalable, efficient, and user-friendly applications." },
   { title: "Academic Excellence & Leadership", content: "Cum Laude Computer Science graduate and consistent Dean's Lister, with leadership experience gained through research, course projects, and collaborative tech initiatives." },
-  { title: "Professional Experience", content: "At prettyclose.co, I served as the sole full-stack developer, building a React/TypeScript frontend and Node.js GraphQL backend, integrating MongoDB and PostgreSQL, and delivering customizable, responsive features with reliable data handling." },
   { title: "Professional Experience", content: "At Wilshire Financial Network, I contributed to enhancing financial CRM applications by developing .NET features, streamlining workflows, and building automation scripts to improve efficiency." },
+  { title: "Professional Experience", content: "At prettyclose.co, I served as the sole full-stack developer, building a React/TypeScript frontend and Node.js GraphQL backend, integrating MongoDB and PostgreSQL, and delivering customizable, responsive features with reliable data handling." },
   { title: "Professional Experience", content: "At Solventis Asia Pacific, Inc. (Synergy), I develop SharePoint sites using Powell 365 and LightningForms for Australian projects and SPFx and native SharePoint features for Singapore projects, while configuring site infrastructure and preparing technical documentation." }
 ])
 
