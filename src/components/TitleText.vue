@@ -8,7 +8,7 @@ const showHireMeMenu = ref(false)
 <template>
   <div class="title-text">
     <h1>Xander Allen Rola</h1>
-    <p>Front-End Developer | Passion for Clean Code and Creative Solutions</p>
+    <p>Full-Stack Developer | Passion for Clean Code and Reliable Solutions</p>
     <CommonUseButton
       label="Hire Me"
       class="btn"
