@@ -9,34 +9,50 @@
       <div class="scrolling-row">
         <h3>JavaScript</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
+        <h3>Vue.js</h3>
+        <img src="@/assets/icons/star.png" class="star-icon" />
+        <h3>TypeScript</h3>
+        <img src="@/assets/icons/star.png" class="star-icon" />
         <h3>Tailwind CSS</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
-        <h3>Figma</h3>
+        <h3>SQL</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
-        <h3>GitHub</h3>
+        <h3>React/h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
-        <h3>Vue.js</h3>
+        <h3>MariaDB</h3>
+        <img src="@/assets/icons/star.png" class="star-icon" />
+        <h3>PostgreSQL</h3>
+        <img src="@/assets/icons/star.png" class="star-icon" />
+        <h3>SharePoint</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
         <h3>Node.js</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
-        <h3>UI/UX</h3>
+        <h3>Git</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
       </div>
 
       <div class="scrolling-row">
         <h3>JavaScript</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
+        <h3>Vue.js</h3>
+        <img src="@/assets/icons/star.png" class="star-icon" />
+        <h3>TypeScript</h3>
+        <img src="@/assets/icons/star.png" class="star-icon" />
         <h3>Tailwind CSS</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
-        <h3>Figma</h3>
+        <h3>SQL</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
-        <h3>GitHub</h3>
+        <h3>React/h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
-        <h3>Vue.js</h3>
+        <h3>MariaDB</h3>
+        <img src="@/assets/icons/star.png" class="star-icon" />
+        <h3>PostgreSQL</h3>
+        <img src="@/assets/icons/star.png" class="star-icon" />
+        <h3>SharePoint</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
         <h3>Node.js</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
-        <h3>UI/UX</h3>
+        <h3>Git</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
       </div>
     </div>
