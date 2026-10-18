@@ -31,12 +31,14 @@ onBeforeUnmount(() => {
         </div>
 
         <p>
-          I’m actively seeking opportunities as a Front-End Developer, where I can apply my
-          skills in JavaScript, Vue.js, Tailwind CSS, and modern web technologies to build
-          responsive and engaging user experiences. If you’re a recruiter or company looking
-          for a dedicated developer with a strong foundation in both design and functionality,
-          I’d be excited to connect. Feel free to reach out—I’d love to discuss how I can
-          contribute to your team.
+          I’m actively seeking opportunities as a Full-Stack Developer, where I can apply my 
+          skills in JavaScript, TypeScript, React, Node.js, GraphQL, and database technologies 
+          to build scalable, efficient, and user-friendly web applications. With experience 
+          spanning frontend development, backend API design, database integration, testing, 
+          and deployment, I enjoy turning ideas into complete, functional solutions. If you’re 
+          a recruiter or company looking for a developer who can contribute across the full 
+          development lifecycle, I’d be excited to connect. Feel free to reach out to discuss 
+          how I can contribute to your team.
         </p>
 
         <p>
