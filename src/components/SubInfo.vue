@@ -17,7 +17,7 @@
         <img src="@/assets/icons/star.png" class="star-icon" />
         <h3>SQL</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
-        <h3>React/h3>
+        <h3>React</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
         <h3>MariaDB</h3>
         <img src="@/assets/icons/star.png" class="star-icon" />
